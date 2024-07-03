@@ -1,0 +1,20 @@
+.button {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  background-color: #531CB3;
+  border-radius: 25px;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: #3A147E;
+  color: #B3B3B3;
+}
