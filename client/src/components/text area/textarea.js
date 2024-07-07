@@ -1,17 +1,18 @@
-import './textfield.css'
+import './textarea.css'
 
-const TextField = ({text, type, value, onChange, ...props}) => {
+const TextArea = ({text, type, value, onChange, ...props}) => {
     return (
-        <div className="input-group">
-            <input 
+        <div className="textarea-group">
+            <textarea 
                 type={type} 
                 value={value}
                 onChange={(e) => onChange(e.target.value)}
                 {...props}
-                required/>
+                required
+            />
             <label htmlFor="" required>{text}</label>
         </div>
     );
 };
 
-export default TextField;
+export default TextArea;

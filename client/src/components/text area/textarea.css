@@ -3,14 +3,14 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.input-group {
+.textarea-group {
     position: relative;
-    margin: 0 !important;
+    margin: 20px 0;
 }
 
-.input-group label {
+.textarea-group label {
     position: absolute;
-    top: 50%;
+    top: 10%;
     left: 10px;
     transform: translateY(-50%);
     font-size: 16px;
@@ -20,28 +20,29 @@
 
 }
 
-.input-group input {
-    width: 300px;
-    height: 40px;
+.textarea-group textarea {
+    width: 25%;
+    height: 200px;
     font-size: 16px;
     color: rgb(50,50,50);
-    padding: 3px 10px;
+    padding: 10px 10px;
     background: transparent;
     border: 1.5px solid rgb(50,50,50);
     outline: none;
     border-radius: 15px;
+    resize: none;
 }
 
-.input-group input:focus~label,
-.input-group input:valid~label {
+.textarea-group textarea:focus~label,
+.textarea-group textarea:valid~label {
     top: 0;
     font-size: 12px;
     background: white;
     transition: 0.5s ease;
 }
 
-.input-group input:focus,
-.input-grtoup input:valid {
+.textarea-group textarea:focus,
+.input-grtoup textarea:valid {
     border: 1.5px solid #531CB3;
     transition: 0.5s ease;
 }
