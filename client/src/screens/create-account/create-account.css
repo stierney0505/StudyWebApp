@@ -1,0 +1,48 @@
+.heading {
+  display: flex;
+  justify-content: center;
+}
+
+.name-group {
+  display: flex;
+  column-gap: 20px;
+}
+
+.form-line {
+  margin-bottom: 20px;
+}
+
+.login-link-line {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.login-link-line > p, a {
+  font-size: 12pt;
+}
+
+.button-line {
+  display: flex;
+  justify-content: center;
+}
+
+.form-container {
+  width: fit-content;
+  height: fit-content;
+  border: 3px solid black;
+  border-radius: 20px;
+  /* margin-top: 10%; */
+  padding: 20px;
+  background-color: white;
+}
+
+.screen-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  height: fit-content;
+  background-image: linear-gradient(to bottom right, #5F66E1, #5B2B99);
+}
