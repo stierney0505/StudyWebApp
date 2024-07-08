@@ -1,0 +1,22 @@
+.text-field-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-field-label {
+  margin-left: 12px;
+  font-size: 12pt;
+}
+
+.text-field {
+  border: 2px solid black;
+  border-radius: 15px;
+  outline: none;
+  padding: 8px 10px;
+  font-size: 12pt;
+}
+
+.text-field:focus {
+  outline: 2px solid #531CB3;
+  border-color: #531CB3;
+}
