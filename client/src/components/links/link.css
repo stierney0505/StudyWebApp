@@ -1,0 +1,28 @@
+.container-link {
+    text-decoration: none;
+    color: rgb(100, 100, 100);
+    background:
+    linear-gradient(
+      to right,
+      rgba(100, 200, 200, 0),
+      rgba(100, 200, 200, 0)
+    ),
+    linear-gradient(
+      to right,
+      #6426cf,
+      #531CB3
+    );
+    background-size: 0 2px, 0 2px;
+    background-position: 0 100%, 0% 100%;
+    background-repeat: no-repeat;
+    transition: background-size 600ms;
+}
+
+.container-link:hover {
+    background-size: 0 2px, 100% 2px;
+}
+
+.container-link-no-underline {
+  text-decoration: none;
+  color: rgb(100, 100, 100);
+}
