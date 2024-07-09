@@ -1,0 +1,64 @@
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.select-group {
+    position: relative;
+    margin: 0 !important;
+    display: inline-block;
+}
+
+.select-group label {
+    position: absolute;
+    top: 10%;
+    left: 15px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: rgb(50,50,50);
+    padding: 0 5px;
+    pointer-events: none;
+
+}
+
+.select-group select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 300px;
+    height: 50px;
+    font-size: 16px;
+    color: rgb(50,50,50);
+    padding: 3px 10px;
+    background: transparent;
+    border: 1.5px solid rgb(50,50,50);
+    outline: none;
+    border-radius: 15px;
+}
+
+.select-group::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    width: 16px;
+    height: 16px; 
+    transform: translateY(-50%);
+    pointer-events: none; 
+    background: url('./../../../assets/select-arrow.svg') no-repeat center center;
+    background-size: contain;
+}
+
+.select-group select:focus~label,
+.select-group select:valid~label {
+    top: 0;
+    font-size: 12px;
+    background: white;
+    transition: 0.5s ease;
+}
+
+.select-group select:focus,
+.input-grtoup select:valid {
+    border: 1.5px solid #531CB3;
+    transition: 0.5s ease;
+}

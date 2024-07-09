@@ -1,0 +1,48 @@
+
+* {
+    font-family: 'Poppins', sans-serif;
+}
+
+.textarea-group {
+    position: relative;
+    margin: 20px 0;
+}
+
+.textarea-group label {
+    position: absolute;
+    top: 10%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: rgb(50,50,50);
+    padding: 0 5px;
+    pointer-events: none;
+
+}
+
+.textarea-group textarea {
+    width: 25%;
+    height: 200px;
+    font-size: 16px;
+    color: rgb(50,50,50);
+    padding: 10px 10px;
+    background: transparent;
+    border: 1.5px solid rgb(50,50,50);
+    outline: none;
+    border-radius: 15px;
+    resize: none;
+}
+
+.textarea-group textarea:focus~label,
+.textarea-group textarea:valid~label {
+    top: 0;
+    font-size: 12px;
+    background: white;
+    transition: 0.5s ease;
+}
+
+.textarea-group textarea:focus,
+.input-grtoup textarea:valid {
+    border: 1.5px solid #531CB3;
+    transition: 0.5s ease;
+}
