@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './App.css'
 import InputButton from './components/button/button';
 import TextField from './components/text-field/text-field';
-import TextArea from './components/text area/text-area';
+import TextArea from './components/text area/textarea';
 import DropDown from './components/drop down/drop-down';
 import RadioButton from './components/radio button/radio-button';
 import CheckBoxes from './components/check boxes/check-boxes';

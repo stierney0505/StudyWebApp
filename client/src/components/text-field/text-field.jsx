@@ -1,18 +1,17 @@
-import './text-field.css';
+import './text-field.css'
 
-const TextField = ({ fieldId, label, name, inputType, placeholder, value, onChange }) => (
-  <div className='text-field-group'>
-    {label && <label htmlFor={fieldId} className='text-field-label poppins-semibold'>{label}</label>}
-    <input
-      id={fieldId}
-      name={name}
-      type={inputType}
-      className='text-field poppins-medium'
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-    />
-  </div>
-);
+const TextField = ({text, type, value, onChange, ...props}) => {
+    return (
+        <div className="input-group">
+            <input 
+                type={type} 
+                value={value}
+                onChange={(e) => onChange(e.target.value)}
+                {...props}
+                required/>
+            <label htmlFor="" required>{text}</label>
+        </div>
+    );
+};
 
 export default TextField;

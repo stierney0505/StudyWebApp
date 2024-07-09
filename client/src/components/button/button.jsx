@@ -1,9 +1,12 @@
 import './button.css';
 
-const Button = ({ type, text }) => (
-  <button className='button poppins-semibold' type={type}>
-    {text}
-  </button>
-);
+const InputButton = ({text, ...props}) => {
 
-export default Button;
+    return (
+        <button className='button' {...props}>
+            {text}
+        </button>
+    );
+};
+
+export default InputButton;

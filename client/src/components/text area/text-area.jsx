@@ -1,4 +1,4 @@
-import './textarea.css'
+import './text-area.css'
 
 const TextArea = ({text, type, value, onChange, ...props}) => {
     return (
