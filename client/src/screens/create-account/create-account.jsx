@@ -24,15 +24,14 @@ const CreateForm = () => {
 
   return (
     <>
-      <h1 className='heading'>Create an Account</h1>
+      <h1 className='heading poppins-bold'>Create an Account</h1>
       <form method='post' onSubmit={createAccount} >
         <div className='name-group form-line'>
           <TextField
             fieldId={id + '-fname'}
-            label={'First Name'}
+            text={'First Name'}
             name={'fname'}
-            inputType={'text'}
-            placeholder={'Enter your first name'}
+            type={'text'}
             value={form.fname}
             onChange={e => setForm({
               ...form,
@@ -41,10 +40,9 @@ const CreateForm = () => {
           />
           <TextField
             fieldId={id + '-lname'}
-            label={'Last Name'}
+            text={'Last Name'}
             name={'lname'}
-            inputType={'text'}
-            placeholder={'Enter your last name'}
+            type={'text'}
             value={form.lname}
             onChange={e => setForm({
               ...form,
@@ -55,10 +53,9 @@ const CreateForm = () => {
         <div className='form-line'>
           <TextField
             fieldId={id + '-email'}
-            label={'Email'}
+            text={'Email'}
             name={'email'}
-            placeholder={'Enter your email'}
-            inputType={'email'}
+            type={'email'}
             value={form.email}
             onChange={e => setForm({
               ...form,
@@ -69,10 +66,9 @@ const CreateForm = () => {
         <div className='form-line'>
           <TextField
             fieldId={id + '-password'}
-            label={'Password'}
+            text={'Password'}
             name={'password'}
-            inputType={'password'}
-            placeholder={'Enter your password'}
+            type={'password'}
             value={form.password}
             onChange={e => setForm({
               ...form,
@@ -83,10 +79,9 @@ const CreateForm = () => {
         <div className='form-line'>
           <TextField
             fieldId={id + '-confirmPassword'}
-            label={'Confirm Password'}
+            text={'Confirm Password'}
             name={'confirm-password'}
-            inputType={'password'}
-            placeholder={'Confirm your password'}
+            type={'password'}
             value={form.confirmPassword}
             onChange={e => setForm({
               ...form,

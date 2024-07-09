@@ -1,6 +1,7 @@
 .heading {
   display: flex;
   justify-content: center;
+  margin-bottom: 30px;
 }
 
 .name-group {
@@ -26,6 +27,7 @@
 .button-line {
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .form-container {
