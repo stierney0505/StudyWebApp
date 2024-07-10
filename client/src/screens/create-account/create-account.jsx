@@ -4,7 +4,7 @@ import './create-account.css';
 
 import TextField from '../../components/text-field/text-field';
 import Button from '../../components/button/button';
-import { Link } from 'react-router-dom';
+import Link from '../../components/links/link';
 
 const CreateForm = () => {
   const id = useId();
@@ -91,7 +91,7 @@ const CreateForm = () => {
         </div>
         <div className='login-link-line'>
           <p className='login-text'>Already have an account?</p>
-          <Link to={'/login'} className='login-link'>Click here!</Link>
+          <Link href={'/login'} underline={true}>Click here!</Link>
         </div>
         <div className='button-line'>
           <Button type={'submit'} text={'Submit'} />
