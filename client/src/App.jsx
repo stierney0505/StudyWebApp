@@ -10,6 +10,7 @@ import { STxt, MTxt, LTxt } from './components/text/text';
 import Header from './components/header/header';
 import Container from './components/container/container';
 import Link from './components/links/link';
+import Footer from './components/footer/footer';
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
           <MTxt>Medium Text</MTxt><br />
           <LTxt>Large Text</LTxt><br />
           <Link href="/" underline={true} >Link to URL</Link><br /><br />
+          <Footer /><br />
         </div>
       </Container>
 

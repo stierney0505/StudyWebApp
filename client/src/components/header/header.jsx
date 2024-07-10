@@ -55,7 +55,7 @@ const Header = () => {
                     <Link href="/"><LTxt>Create</LTxt></Link>
                     <Link href="/"><LTxt>Profile</LTxt></Link>
                     <Link href="/"><LTxt>Settings</LTxt></Link>
-                    <TextField id="search-box-mobile" type="text" value={searchValue} onChange={(e) => setSearchValue(e.target.value)} placeholder="" />
+                    <TextField id="search-box-mobile" type="text" value={searchValue} onChange={(e) => setSearchValue(e.target.value)} placeholder="Search Sets" />
                 </div>
             </div>
 
