@@ -1,5 +1,4 @@
 import './link.css';
-import React from 'react';
 
 const Link = ({children, href, underline, ...props}) => {
     if (underline === true){

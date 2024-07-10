@@ -1,5 +1,4 @@
 import './container.css';
-import React from "react";
 
 const Container = ({children}) => {
     return (

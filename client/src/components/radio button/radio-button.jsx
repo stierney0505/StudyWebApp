@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import './radio-button.css';
 
 const RadioButton = ({options, ...props}) => {

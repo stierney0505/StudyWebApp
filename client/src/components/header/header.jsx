@@ -1,5 +1,5 @@
 import './header.css';
-import React, { useState } from "react";
+import { useState } from "react";
 import Link from '../links/link';
 import { Settings, UserAvatar, } from "@carbon/icons-react";
 import TextField from '../text-field/text-field';
