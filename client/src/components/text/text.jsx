@@ -1,20 +1,20 @@
 import './text.css'
 
-const STxt = ({children}) => {
+const STxt = ({children, ...props}) => {
     return (
-        <p className="smallText">{children}</p>
+        <p className="smallText" {...props}>{children}</p>
     );
 }
 
-const MTxt = ({children}) => {
+const MTxt = ({children, ...props}) => {
     return (
-        <p className="mediumText">{children}</p>
+        <p className="mediumText" {...props}>{children}</p>
     );
 }
 
-const LTxt = ({children}) => {
+const LTxt = ({children, ...props}) => {
     return (
-        <p className="largeText">{children}</p>
+        <p className="largeText" {...props}>{children}</p>
     );
 }
 
