@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import './checkboxes.css';
+import { useState } from "react";
+import './check-boxes.css';
 
 const CheckBoxes = ({options, ...props}) => {
 

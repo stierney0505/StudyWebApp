@@ -1,19 +1,17 @@
 .button {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    background-color: #531CB3;
-    border-radius: 25px;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-  }
-  
-  .button:hover {
-    cursor: pointer;
-    background-color: #4b18a2;
-    color: #e0e0e0;
-  }
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 12pt;
+  background-color: #531CB3;
+  color: white;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: #FDCA40;
+  color: black;
+  /* if we just want the color to be a darker purple instead of yellow on hover */
+  /* background-color: #3A147E;
+  color: #B3B3B3; */
+}

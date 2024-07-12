@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import './radiobutton.css';
+import {useState} from "react";
+import './radio-button.css';
 
 const RadioButton = ({options, ...props}) => {
 

@@ -1,4 +1,4 @@
-import './dropdown.css'
+import './drop-down.css'
 
 const DropDown = ({text, options, hint, ...props}) => {
     return (

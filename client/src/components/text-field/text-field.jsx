@@ -1,15 +1,16 @@
-import './textfield.css'
+import './text-field.css'
 
-const TextField = ({text, type, value, onChange, ...props}) => {
+const TextField = ({fieldId, text, type, value, onChange, ...props}) => {
     return (
         <div className="input-group">
             <input 
+                id={fieldId}
                 type={type} 
                 value={value}
-                onChange={(e) => onChange(e.target.value)}
+                onChange={onChange}
                 {...props}
                 required/>
-            <label htmlFor="" required>{text}</label>
+            <label htmlFor={fieldId} required>{text}</label>
         </div>
     );
 };

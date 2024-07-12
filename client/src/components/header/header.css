@@ -95,6 +95,127 @@
     transition: 300ms ease;
 }
 
+/* Hidden by default */
+.hamburger-menu {
+    display: none;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#hamburger-icon {
+    font-size: 30;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+}
+
+#mobile-hrefs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999999;
+    opacity: 0.95;
+    background-color: #fff;
+    display: none;
+}
+
+#mobile-hrefs .content-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 10%;
+    align-items: center;
+}
+
+#mobile-hrefs .content-container Link {
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+#mobile-hrefs .content-container * {
+    color: rgb(50,50,50);
+    text-align: center;
+    font-weight: 400;
+    margin-top: 2%;
+    max-width: 100%;
+}
+
+#mobile-hrefs .content-container h1 {
+    color: rgb(50,50,50);
+    text-align: center;
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.close-button-container {
+    display: flex;
+    justify-content: right;
+    padding: 20px 20px;
+}
+
+.close-button-container button {
+    background-color: transparent;
+    color: rgb(50,50,50);
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    border: none
+}
+
+#search-box-mobile {
+    margin-top: 4%;
+    color: red;
+    width: 250px;
+    align-self: center;
+    justify-content: center;
+    margin: 10% 0 0 0 !important;
+    padding: 0 !important;
+    height: 35px;
+    transition: 300ms ease;
+    border-radius: 0px;
+    border: 0px solid transparent;
+    border-bottom: 1.5px solid rgb(50,50,50);
+}
+
+#search-box-mobile:focus {
+    width: 400px;
+    transition: 300ms ease;
+}
+
+/* Responsive Header - Shrink Search Box */
+@media (max-width: 959px) {
+
+    #search-box {
+        width: 150px;
+    }
+
+}
+
+/* Responsive Header - Hamburger Menu */
+@media (max-width: 841px) {
+
+    .left-links {
+        display: none;
+    }
+
+    .right-header {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+    
+}
+
 
 
 

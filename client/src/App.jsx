@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import './App.css'
 import InputButton from './components/button/button';
-import TextField from './components/text field/textfield';
-import TextArea from './components/text area/textarea';
-import DropDown from './components/drop down/dropdown';
-import RadioButton from './components/radio button/radiobutton';
-import CheckBoxes from './components/check boxes/checkboxes';
+import TextField from './components/text-field/text-field';
+import TextArea from './components/text area/text-area';
+import DropDown from './components/drop down/drop-down';
+import RadioButton from './components/radio button/radio-button';
+import CheckBoxes from './components/check boxes/check-boxes';
 import { STxt, MTxt, LTxt } from './components/text/text';
 import Header from './components/header/header';
 import Container from './components/container/container';
 import Link from './components/links/link';
+import Footer from './components/footer/footer';
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
           <MTxt>Medium Text</MTxt><br />
           <LTxt>Large Text</LTxt><br />
           <Link href="/" underline={true} >Link to URL</Link><br /><br />
+          <Footer /><br />
         </div>
       </Container>
 
