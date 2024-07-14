@@ -1,10 +1,11 @@
 import './button.css';
 
-const InputButton = ({text, ...props}) => {
+const InputButton = ({text, children, ...props}) => {
 
     return (
         <button className='button' {...props}>
             {text}
+            {children}
         </button>
     );
 };

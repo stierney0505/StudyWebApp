@@ -3,6 +3,7 @@ import LandingPage from './screens/landing/landing-page.jsx';
 import CreateAccount from './screens/create-account/create-account';
 import Header from './components/header/header';
 import Container from './components/container/container';
+import Footer from './components/footer/footer.jsx';
 import './App.css';
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
               <div className='content'>
                 <LandingPage />
               </div>
+              <Footer />
             </Container>
           }>
             <Route path="create-account" element={CreateAccount}/>
