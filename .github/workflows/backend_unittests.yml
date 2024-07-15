@@ -43,6 +43,6 @@ jobs:
         echo "${{ secrets.APPLICATION_TEST }}" > application-test.properties
 
     - name: Run tests
-      run: 
+      run: |
         cd server
         mvn test
