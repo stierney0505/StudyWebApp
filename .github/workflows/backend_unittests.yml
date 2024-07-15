@@ -39,7 +39,7 @@ jobs:
     
     - name: Set up application-test.properties
       run: |
-        cd src/main/resources
+        cd server/src/main/resources
         echo "${{ secrets.APPLICATION_TEST }}" > application-test.properties
 
     - name: Run tests
