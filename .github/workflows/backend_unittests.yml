@@ -33,11 +33,13 @@ jobs:
           ${{ runner.os }}-maven-
 
     - name: Install dependencies
-      run: mvn install -DskipTests
+      run: |
+        cd server
+        mvn install -DskipTests
     
     - name: Set up application-test.properties
       run: |
-        cd server/src/main/resources
+        cd src/main/resources
         echo "${{ secrets.APPLICATION_TEST }}" > application-test.properties
 
     - name: Run tests
