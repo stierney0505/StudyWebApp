@@ -33,5 +33,5 @@ build/
 .vscode/
 
 ### application.properties files ###
-!**/application.properties
-!**/application-test.properties
+src/main/resources/application.properties
+src/main/resources/application-test.properties
