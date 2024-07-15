@@ -22,9 +22,7 @@ const LandingPage = () => {
                 <div className="call-to-action">
                     {/* href="/create-account" */}
                     <Link id="login-link" underline={true}>Login</Link>
-                    <InputButton id="get-started-button" text="Get Started">
-                        <Link href="/create-account" />
-                    </InputButton>
+                    <InputButton id="get-started-button" URL="/create-account" text="Get Started" />
                 </div>
                 
             </div>
@@ -86,9 +84,7 @@ const LandingPage = () => {
                 <div className="call-to-action">
                     {/* href="/create-account" */}
                     <Link id="login-link" underline={true}>Login</Link>
-                    <InputButton id="get-started-button" text="Get Started">
-                        <Link href="/create-account" />
-                    </InputButton>
+                    <InputButton id="get-started-button" URL="/create-account" text="Get Started" />
                 </div>
             </div>
 
