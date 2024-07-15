@@ -1,0 +1,65 @@
+.login-container {
+    background-color: yellow;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5% 10%;
+    margin-bottom: 3%;
+}
+
+.login-form {
+    background-color: orange;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3% 5%;
+}
+
+#header-main {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#header-secondary {
+    font-size: 25;
+    font-weight: 500;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.login-fields {
+    width: 300px;
+}
+
+#lg-username {
+    width: 100%;
+    height: 50px;
+    margin-bottom: 20px; 
+}
+
+#lg-username-id label {
+    transform: translateY(-90%);
+}
+
+#lg-username-id input:focus~label,
+#lg-username-id input:valid~label {
+    bottom: 10 !important;
+    font-size: 12px;
+    background: white;
+    transition: 0.5s ease;
+    transform: translateY(-50%);
+}
+
+#lg-password {
+    width: 100%;
+    height: 50px;
+}
+
+#submit-button {
+    margin-top: 20px;
+}
+
+
+
