@@ -33,7 +33,8 @@
 }
 
 .input-group input:focus~label,
-.input-group input:valid~label {
+.input-group input:valid~label,
+.input-group input:not([value=""])~label {
     top: 0;
     font-size: 12px;
     background: white;
@@ -41,7 +42,7 @@
 }
 
 .input-group input:focus,
-.input-grtoup input:valid {
+.input-group input:valid {
     border: 1.5px solid #531CB3;
     transition: 0.5s ease;
 }
