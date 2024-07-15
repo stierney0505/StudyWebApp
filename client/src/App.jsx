@@ -14,13 +14,16 @@ const App = () => {
         <Route 
           path="/"
           element={
-            <Container>
+            <>
               <Header />
-              <div className='content'>
-                <LandingPage />
-              </div>
-              <Footer />
-            </Container>
+              <Container>
+                <div className='content'>
+                  <LandingPage />
+                </div>
+                <Footer /><br />
+              </Container>
+            </>
+            
           }>
             <Route path="create-account" element={CreateAccount}/>
         </Route>

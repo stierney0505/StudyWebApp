@@ -43,7 +43,7 @@
     flex-direction: center;
     align-items: center;
     justify-content: space-around;
-    width: 20%;
+    width: 230px;
 }
 
 #login-link {
@@ -71,8 +71,9 @@
     align-items: center;
     text-align: center;
     flex-direction: column;
-    background: linear-gradient(135deg, #fee5a0, #efc246);
+    background: linear-gradient(135deg, #efc246, #FDCA40);
     border-radius: 30px;
+    margin-bottom: 3%;
 }
 
 .features {
@@ -143,4 +144,251 @@
     margin-bottom: 3%;
     text-align: center;
     font-size: 23px;
+}
+
+/* Customize Your Study Material */
+
+.customize-SM-container {
+    display: flex;
+    justify-content: center;
+    padding: 5% 3% 5% 3%;
+    flex-direction: column;
+    align-items: center;
+    background: rgb(248, 248, 248);
+    border-radius: 30px;
+    margin-bottom: 3%;
+}
+
+.question-types {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3%;
+}
+
+.flashcards {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    background-color: white;
+    width: 100%;
+    padding: 2% 3%;
+    border-radius: 30px;
+    margin-bottom: 2%;
+}
+
+.multiple-choice {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    align-items: center;
+    background-color: white;
+    padding: 2% 3%;
+    border-radius: 30px;
+    margin-bottom: 2%;
+}
+
+.fill-in-the-blank {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+    padding: 2% 3%;
+}
+
+#customize-header {
+    font-weight: 600;
+    margin-bottom: 3%;
+    font-size: 28px;
+    background: -webkit-linear-gradient(315deg, #6b39c3, #531CB3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.mc-text {
+    width: 50%;
+}
+
+
+.fitb-text {
+    width: 50%;
+}
+
+.flashcards-text {
+    width: 50%;
+}
+
+#f-header {
+    font-weight: 600;
+    font-size: 22px;
+    margin-bottom: 2%;
+    /* color: rgb(50,50,50); */
+    background: -webkit-linear-gradient(315deg, #6b39c3, #531CB3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#f-text {
+    font-size: 20px;
+    color: rgb(50,50,50);
+}
+
+.flashcards-graphic {
+    max-width: 30%;
+}
+
+#f-graphic {
+    max-width: 100%;
+}
+
+.mc-graphic {
+    max-width: 30%;
+}
+
+.fitb-graphic {
+    max-width: 30%;
+}
+
+@media (max-width: 1100px) {
+
+    .features-container {
+        padding: 5% 8% 5% 8%;
+    }
+
+}
+
+@media (max-width: 1000px) {
+    .features {
+        justify-content: center;
+        align-items: top;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .feature-learners {
+        width: 100%;
+        margin-bottom: 5%;
+        margin-top: 2%;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .feature-instructors {
+        width: 100%;
+        margin-bottom: 5%;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .feature-publishers{
+        width: 100%;
+        margin-bottom: 3%;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .multiple-choice {
+        flex-direction: row;
+    }
+
+    #section-header {
+        margin-bottom: 5%;
+        padding: 0% 5%;
+    }
+
+}
+
+@media (max-width: 900px) {
+
+    .flashcards {
+        flex-direction: column;
+        text-align: center;
+        padding: 2% 8%;
+        margin-bottom: 5%;
+    }
+    
+    .multiple-choice {
+        flex-direction: column;
+        text-align: center;
+        padding: 2% 8%;
+        margin-bottom: 5%;
+    }
+    
+    .fill-in-the-blank {
+        flex-direction: column;
+        text-align: center;
+        padding: 2% 8%;
+        margin-bottom: 3%;
+    }
+
+    #f-graphic {
+        max-width: 100%;
+    }
+    
+
+    .flashcards-graphic {
+        max-width: 25%;
+        margin-bottom: 3%;
+        margin-top: 2%;
+    }
+
+    .mc-graphic {
+        max-width: 25%;
+        margin-bottom: 3%;
+        margin-top: 2%;
+    }
+
+
+    .fitb-graphic {
+        max-width: 25%;
+        margin-bottom: 3%;
+        margin-top: 2%;
+    }
+
+    .mc-text {
+        width: 100%;
+    }
+    
+    
+    .fitb-text {
+        width: 100%;
+    }
+    
+    .flashcards-text {
+        width: 100%;
+    }
+
+    #customize-header {
+        padding: 0% 5%;
+        margin-bottom: 5%;
+        text-align: center;
+    }
+
+}
+
+@media (max-width: 700px) {
+    
+    .features-container {
+        padding: 7% 4% 7% 4%;
+        margin-bottom: 5%;
+    }
+
+    .hero-section {
+        padding: 6% 3% 6% 3%;
+        margin-bottom: 5%;
+    }
+
+    .customize-SM-container {
+        margin-bottom: 5%;
+    }
+
+    .call-to-action {
+        margin-top: 3%;
+    }
+    
+
 }

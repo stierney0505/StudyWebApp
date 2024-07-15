@@ -52,25 +52,46 @@ const LandingPage = () => {
             </div>
 
             {/* Customize Your Study Material */}
+            <div className="customize-SM-container">
+                <MTxt id="customize-header">Customize your study material to fit your subject</MTxt>
+                <div className="question-types">
+                    <div className="flashcards">
+                        <div className="flashcards-graphic">
+                            <img id="f-graphic" src="./../../assets/f-graphic.png" alt="flashcards graphic" />
+                        </div>
+                        <div className="flashcards-text">
+                            <MTxt id="f-header">Flashcards</MTxt>
+                            <STxt id="f-text">Create term-solution pairs to identify key concepts.</STxt>
+                        </div>
+                    </div>
+                    <div className="multiple-choice">
+                        <div className="mc-graphic">
+                            <img id="f-graphic" src="./../../assets/mc-graphic.png" alt="multiple choice graphic" />
+                        </div>
+                        <div className="mc-text">
+                            <MTxt id="f-header">Multiple Choice & Multi-Select</MTxt>
+                            <STxt id="f-text">Test your knowledge with multiple choice and multi-select questions.</STxt>
+                        </div>
+                    </div>
+                    <div className="fill-in-the-blank">
+                        <div className="fitb-graphic">
+                            <img id="f-graphic" src="./../../assets/fitb-graphic.png" alt="fill in the blank graphic" />
+                        </div>
+                        <div className="fitb-text">
+                            <MTxt id="f-header">Fill In the Blank</MTxt>
+                            <STxt id="f-text">Create fill in the blank question templates to understand larger concepts.</STxt>
+                        </div>
+                    </div>
+                </div>
+                <div className="call-to-action">
+                    {/* href="/create-account" */}
+                    <Link id="login-link" underline={true}>Login</Link>
+                    <InputButton id="get-started-button" text="Get Started">
+                        <Link href="/create-account" />
+                    </InputButton>
+                </div>
+            </div>
 
-
-
-
-
-
-            {/* <InputButton text="Input Button" /><br></br><br></br>
-            <TextField type="text" onChange={setText} value={text} text='Username' />
-            <p>{text}</p>
-            <TextArea type="text" onChange={setArea} value={area} text='Biography' />
-            <p>{area}</p>
-            <DropDown hint="Select Role" options={options} text="Choose Car" /><br /><br />
-            <RadioButton options={radioOptions} /><br />
-            <CheckBoxes options={checkboxOptions} /><br />
-            <STxt>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur nisi explicabo ab exercitationem quidem, porro architecto ducimus tempora cum adipisci sunt eaque assumenda officia facilis repellendus, modi deserunt, dolor at?</STxt>
-            <MTxt>Medium Text</MTxt><br />
-            <LTxt>Large Text</LTxt><br />
-            <Link href="/" underline={true} >Link to URL</Link><br /><br />
-            <Footer /><br /> */}
         </>
     );
 }

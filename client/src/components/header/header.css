@@ -12,11 +12,11 @@
 .container-header {
     position: fixed;
     top: 0;
-    width: 90% !important;
+    width: 100% !important;
     display: flex;
     justify-content: space-between;
-    background-color: #fff; 
-    padding: 15px 0px;
+    background-color: #fff;
+    padding: 15px 5%;
     z-index: 1000;
     overflow: hidden;
     margin-bottom: 100% !important;
@@ -119,7 +119,7 @@
     width: 100%;
     height: 100%;
     z-index: 99999999;
-    opacity: 0.95;
+    opacity: 0.98;
     background-color: #fff;
     display: none;
 }
