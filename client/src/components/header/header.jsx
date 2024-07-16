@@ -34,7 +34,7 @@ const Header = () => {
                 </div>
             </div>
             <div className='right-header'>
-                <TextField id="search-box" type="text" value={searchValue} onChange={(e) => setSearchValue(e.target.value)} placeholder="Search Sets" />
+                <TextField fieldId="search-box" type="text" value={searchValue} onChange={(e) => setSearchValue(e.target.value)} placeholder="Search Sets" />
                 <Link href="/" id="profile-icon"><UserAvatar size={25}/></Link>
                 <Link href="/" id="settings-icon"><Settings size={25}/></Link>
             </div>
@@ -55,7 +55,7 @@ const Header = () => {
                     <Link href="/"><LTxt>Create</LTxt></Link>
                     <Link href="/"><LTxt>Profile</LTxt></Link>
                     <Link href="/"><LTxt>Settings</LTxt></Link>
-                    <TextField id="search-box-mobile" type="text" value={searchValue} onChange={(e) => setSearchValue(e.target.value)} placeholder="Search Sets" />
+                    <TextField fieldId="search-box-mobile" type="text" value={searchValue} onChange={(e) => setSearchValue(e.target.value)} placeholder="Search Sets" />
                 </div>
             </div>
 
