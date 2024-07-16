@@ -1,6 +1,6 @@
 import { useId, useState } from 'react';
 
-import './create-account.css';
+import styles from './create-account.module.css';
 
 import TextField from '../../components/text-field/text-field';
 import Button from '../../components/button/button';
@@ -8,7 +8,6 @@ import Link from '../../components/links/link';
 
 const CreateForm = () => {
   const id = useId();
-
   const [form, setForm] = useState({
     fname: '',
     lname: '',
@@ -24,9 +23,9 @@ const CreateForm = () => {
 
   return (
     <>
-      <h1 className='heading poppins-bold'>Create an Account</h1>
+      <h1 className={ [styles.heading, styles['poppins-bold']].join(' ') }>Create an Account</h1>
       <form method='post' onSubmit={createAccount} >
-        <div className='name-group form-line'>
+        <div className={ [styles['name-group'], styles['form-line']].join(' ') }>
           <TextField
             fieldId={id + '-fname'}
             text={'First Name'}
@@ -50,7 +49,7 @@ const CreateForm = () => {
             })}
           />
         </div>
-        <div className='form-line'>
+        <div className={styles['form-line']}>
           <TextField
             fieldId={id + '-email'}
             text={'Email'}
@@ -63,7 +62,7 @@ const CreateForm = () => {
             })}
           />
         </div>
-        <div className='form-line'>
+        <div className={styles['form-line']}>
           <TextField
             fieldId={id + '-password'}
             text={'Password'}
@@ -76,7 +75,7 @@ const CreateForm = () => {
             })}
           />
         </div>
-        <div className='form-line'>
+        <div className={styles['form-line']}>
           <TextField
             fieldId={id + '-confirmPassword'}
             text={'Confirm Password'}
@@ -89,11 +88,11 @@ const CreateForm = () => {
             })}
           />
         </div>
-        <div className='login-link-line'>
-          <p className='login-text'>Already have an account?</p>
+        <div className={styles['login-link-line']}>
+          <p className={styles['login-text']}>Already have an account?</p>
           <Link href={'/login'} underline={true}>Click here!</Link>
         </div>
-        <div className='button-line'>
+        <div className={styles['button-line']}>
           <Button type={'submit'} text={'Submit'} />
         </div>
       </form>
@@ -102,8 +101,8 @@ const CreateForm = () => {
 };
 
 const CreateAccount = () => (
-  <div className='screen-container'>
-    <div className='form-container'>
+  <div className={styles['screen-container']}>
+    <div className={styles['form-container']}>
       <CreateForm />
     </div>
   </div>
