@@ -1,16 +1,18 @@
 import './text-field.css'
 
-const TextField = ({fieldId, text, placeholder, type, value, onChange, ...props}) => {
+const TextField = ({fieldId, text, placeholder, name, register, type, value, onChange, ...props}) => {
     return (
         <div className="input-group" {...props}>
             <input 
                 id={fieldId}
                 type={type} 
                 value={value}
+                name={name}
                 onChange={onChange}
                 placeholder={placeholder}
-                required/>
-            <label htmlFor={fieldId} required>{text}</label>
+                {...register}
+            required/>
+            <label htmlFor={fieldId}>{text}</label>
         </div>
     );
 };
