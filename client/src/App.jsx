@@ -8,6 +8,7 @@ import './App.css';
 import LandingPage from './screens/landing/landing-page.jsx';
 import CreateAccount from './screens/create-account/create-account';
 import LoginPage from './screens/login/login-page.jsx';
+import NotFoundPage from './screens/404/not-found-page.jsx';
 
 const App = () => {
 
@@ -35,8 +36,8 @@ const App = () => {
             <>
               <CreateAccount />
             </>
-          }
-        />
+          }>
+        </Route>
         <Route 
           path="/login" 
           element={
@@ -49,7 +50,24 @@ const App = () => {
                 <Footer />
               </Container>
             </>
-          }/>
+          }>
+        </Route>
+
+        {/* Catch All Page - 404 */}
+        <Route
+          path="*"
+          element={
+            <>
+              <Header />
+              <Container>
+                <div className='content'>
+                  <NotFoundPage />
+                </div>
+                <Footer />
+              </Container>
+            </>
+          }>
+        </Route>
           
       </Routes>
       
