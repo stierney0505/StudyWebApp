@@ -3,7 +3,7 @@ package com.example.server;
 import com.example.server.entities.User;
 import com.example.server.routes.UserRoutes;
 import com.example.server.security.UserSecurityConfig;
-import com.example.server.services.UserService;
+import com.example.server.services.route_services.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
