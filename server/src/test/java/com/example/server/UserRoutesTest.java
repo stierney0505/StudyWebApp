@@ -1,20 +1,22 @@
 package com.example.server;
 
 import com.example.server.entities.User;
-import com.example.server.routes.UserRoutes;
-import com.example.server.security.UserSecurityConfig;
 import com.example.server.services.route_services.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.servlet.http.Cookie;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.ResultActions;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import java.util.Arrays;
 import java.util.List;
 
 import static org.mockito.Mockito.when;
@@ -23,9 +25,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 // UserRouteTests exist to test the function of the UserRoutes rest controller. It exists to ensure that the date given
 // through the UserService is formatting in a consistent way.
-@WebMvcTest(UserRoutes.class)
-@ExtendWith(SpringExtension.class)
-@Import({UserSecurityConfig.class})
+@SpringBootTest
+@AutoConfigureMockMvc
 @ActiveProfiles("test")
 public class UserRoutesTest {
         @Value("${routes.users}")
@@ -33,6 +34,9 @@ public class UserRoutesTest {
 
         @Autowired
         private MockMvc mockMvc;
+
+        @Autowired
+        private TestUtilFunctions utilFunctions;
 
         @MockBean
         private UserService service;
@@ -47,7 +51,8 @@ public class UserRoutesTest {
             when(service.findUserById(1)).thenReturn(returnUser);
 
             // Perform the GET request to /api/users/1 and verify the response
-            mockMvc.perform(get(endPoint + "/1"))
+            mockMvc.perform(get(endPoint + "/1")
+                            .cookie(utilFunctions.getJwtCookie("bjones@gmail.com")))
                     .andExpect(status().isOk()) // Check for HTTP 200 OK status
                     .andExpect(content().contentType("application/json")) // Optional: Verify content type
                     .andExpect(jsonPath("$.firstName").value("Bepis")) // Example: Verify response JSON content
@@ -64,7 +69,7 @@ public class UserRoutesTest {
             when(service.findAllUsers()).thenReturn(List.of(returnUsers));
 
             // Perform the GET request to /api/users and verify the response
-            mockMvc.perform(get(endPoint))
+            mockMvc.perform(get(endPoint).cookie(utilFunctions.getJwtCookie("bjones@gmail.com")))
                     .andExpect(status().isOk()) // Check for HTTP 200 OK status
                     .andExpect(content().contentType("application/json"))
                     .andExpect(jsonPath("$.length()").value(returnUsers.length))
@@ -83,6 +88,7 @@ public class UserRoutesTest {
             when(service.saveUser(provideUser)).thenReturn(provideUser);
 
             mockMvc.perform(post(endPoint)
+                            .cookie(utilFunctions.getJwtCookie("bjones@gmail.com"))
                             .accept("application/json")
                             .contentType("application/json")
                             .content(Obj.writeValueAsString(provideUser)))
@@ -94,7 +100,7 @@ public class UserRoutesTest {
 
         @Test
         public void deleteUser() throws Exception {
-            mockMvc.perform(delete(endPoint + "/1"))
+            mockMvc.perform(delete(endPoint + "/1").cookie(utilFunctions.getJwtCookie("bjones@gmail.com")))
                     .andExpect(status().isOk()); // Check for HTTP 200 OK status
         }
 
@@ -106,6 +112,7 @@ public class UserRoutesTest {
             when(service.updateUser(provideUser, 1)).thenReturn(provideUser);
 
             mockMvc.perform(put(endPoint + "/1")
+                            .cookie(utilFunctions.getJwtCookie("bjones@gmail.com"))
                             .accept("application/json")
                             .contentType("application/json")
                             .content(Obj.writeValueAsString(provideUser)))
