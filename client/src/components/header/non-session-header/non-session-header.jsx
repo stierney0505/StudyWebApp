@@ -1,11 +1,12 @@
-import './header.css';
+import './non-session-header.css';
 import { useState } from "react";
-import Link from '../links/link';
-import { Settings, UserAvatar, Menu } from "@carbon/icons-react";
-import TextField from '../text-field/text-field';
-import { LTxt } from '../text/text';
+import Link from '../../links/link';
+import { Menu } from "@carbon/icons-react";
+import TextField from '../../text-field/text-field';
+import InputButton from '../../button/button';
+import Logo from './../../../../assets/logo.svg'
 
-const Header = () => {
+const NoSessionHeader = () => {
 
     const [searchValue, setSearchValue] = useState('');
     const [mobileNavDisplay, setMobileNavDisplay] = useState(false);
@@ -26,17 +27,12 @@ const Header = () => {
     return (
         <div className='container-header'>
             <div className='left-header'>
-                <h2 id="header-logo" >Study Web App</h2>
-                <div className="left-links">
-                    <Link href="/" underline={true}>Dashboard</Link>
-                    <Link href="/" underline={true}>Flashcards</Link>
-                    <Link href="/" underline={true}>Create</Link>
-                </div>
+                <img src={Logo} alt="Study Web App Logo" width={130}/>
             </div>
             <div className='right-header'>
                 <TextField fieldId="search-box" type="text" value={searchValue} onChange={(e) => setSearchValue(e.target.value)} placeholder="Search Sets" />
-                <Link href="/" id="profile-icon"><UserAvatar size={25}/></Link>
-                <Link href="/" id="settings-icon"><Settings size={25}/></Link>
+                <Link href="/login" id="log-in-link" underline={true} >Log In</Link>
+                <InputButton text={"Get Started"} URL="/create-account" id="sign-up-button"/>
             </div>
             <div className='hamburger-menu'>
                 <Link href="#" id="hamburger-icon" onClick={openMenu}><Menu size={25}/></Link>
@@ -49,12 +45,10 @@ const Header = () => {
                 </div>
                 <div className="content-container">
                     <Link href="/"><h1>Study Web App</h1></Link>
-                    <Link href="/"><LTxt>Home</LTxt></Link>
-                    <Link href="/"><LTxt>Dashboard</LTxt></Link>
-                    <Link href="/"><LTxt>Flashcards</LTxt></Link>
-                    <Link href="/"><LTxt>Create</LTxt></Link>
-                    <Link href="/"><LTxt>Profile</LTxt></Link>
-                    <Link href="/"><LTxt>Settings</LTxt></Link>
+                    <div className="action-buttons-responsive">
+                        <Link href="/login" id="log-in-link-resp" underline={true} >Log In</Link>
+                        <InputButton text={"Get Started"} URL="/create-account" id="sign-up-button"/>
+                    </div>
                     <TextField fieldId="search-box-mobile" type="text" value={searchValue} onChange={(e) => setSearchValue(e.target.value)} placeholder="Search Sets" />
                 </div>
             </div>
@@ -65,4 +59,4 @@ const Header = () => {
     );
 }
 
-export default Header;
+export default NoSessionHeader;

@@ -384,10 +384,15 @@
 
     .customize-SM-container {
         margin-bottom: 5%;
+        padding-bottom: 6%;
     }
 
     .call-to-action {
         margin-top: 3%;
+    }
+    
+    .question-types * {
+        background-color: rgb(252, 252, 252);
     }
     
 

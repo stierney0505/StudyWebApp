@@ -2,13 +2,17 @@ import Link from "../../components/links/link";
 import InputButton from "../../components/button/button";
 import { LTxt, MTxt, STxt } from "../../components/text/text";
 import { Education, Notebook, GroupPresentation } from "@carbon/icons-react";
+import { Helmet } from 'react-helmet';
 import './landing-page.css';
-
 
 const LandingPage = () => {
 
     return (
         <>
+
+            <Helmet>
+                <title>Home</title>
+            </Helmet>
 
             {/* Hero Section */}
             <div className="hero-section">

@@ -2,11 +2,16 @@
 import InputButton from '../../components/button/button';
 import { LTxt, MTxt } from '../../components/text/text';
 import styles from './not-found.module.css'
+import { Helmet } from 'react-helmet';
+
 
 const NotFoundPage = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Page Not Found</title>
+            </Helmet>
             <div className={styles['NF-container']}>
                 <div className={styles['NF-text']}>
                     <LTxt id={styles['NF-header']}>We are unable to find this page</LTxt>

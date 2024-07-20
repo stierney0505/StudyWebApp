@@ -1,8 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
-import Header from './components/header/header';
 import Container from './components/container/container';
 import Footer from './components/footer/footer.jsx';
 import './App.css';
+
+//headers
+// import SessionHeader from './components/header/non-session-header/header.jsx';
+import NoSessionHeader from './components/header/non-session-header/non-session-header.jsx';
 
 // Pages
 import LandingPage from './screens/landing/landing-page.jsx';
@@ -19,7 +22,7 @@ const App = () => {
           path="/"
           element={
             <>
-              <Header />
+              <NoSessionHeader />
               <Container>
                 <div className='content'>
                   <LandingPage />
@@ -42,7 +45,7 @@ const App = () => {
           path="/login" 
           element={
             <>
-              <Header />
+              <NoSessionHeader />
               <Container>
                 <div className='content'>
                   <LoginPage />
@@ -58,7 +61,7 @@ const App = () => {
           path="*"
           element={
             <>
-              <Header />
+              <NoSessionHeader />
               <Container>
                 <div className='content'>
                   <NotFoundPage />

@@ -5,6 +5,7 @@ import './create-account.css';
 import TextField from '../../components/text-field/text-field';
 import Button from '../../components/button/button';
 import Link from '../../components/links/link';
+import { Helmet } from 'react-helmet';
 
 const CreateForm = () => {
   const id = useId();
@@ -24,6 +25,9 @@ const CreateForm = () => {
 
   return (
     <>
+      <Helmet>
+          <title>Create Account</title>
+      </Helmet>
       <h1 className='heading poppins-bold'>Create an Account</h1>
       <form method='post' onSubmit={createAccount} >
         <div className='name-group form-line'>

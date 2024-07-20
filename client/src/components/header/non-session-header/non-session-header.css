@@ -1,0 +1,262 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+
+#header-logo {
+    font-weight: 600;
+    color: rgb(50,50,50);
+}
+
+.container-header {
+    position: fixed;
+    top: 0;
+    width: 100% !important;
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 15px 5%;
+    z-index: 1000;
+    overflow: hidden;
+    margin-bottom: 100% !important;
+}
+
+.left-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+}
+
+.right-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 2;
+}
+
+#profile-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    color: rgb(50,50,50);
+    transition: 300ms ease;
+}
+
+#settings-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgb(50,50,50);
+    transition: 300ms ease;
+}
+
+#profile-icon:hover {
+    color: #531CB3;
+    transition: 300ms ease;
+    cursor: pointer;
+}
+
+#settings-icon:hover {
+    color: #531CB3;
+    rotate: 45deg;
+    transition: 300ms ease;
+    cursor: pointer;
+}
+
+#search-box {
+    margin-right: 20px;
+    height: 35px;
+    width: 250px;
+    transition: 300ms ease;
+    border-radius: 0px;
+    border: 0px solid transparent;
+    border-bottom: 1.5px solid rgb(50,50,50);
+    padding-left: 0;
+    /* border: 1px solid rgb(50,50,50); */
+}
+
+#search-box:focus {
+    width: 400px;
+    transition: 300ms ease;
+}
+
+/* Log in and Sign Up Buttons */
+#log-in-link {
+    margin-right: 3%;
+}
+
+#sign-up-button {
+    padding: 6px 12px;
+}
+
+#sign-up-button:hover {
+    background-color: #3A147E;
+    color: #dfdfdf; 
+}
+
+/* Hidden by default */
+.hamburger-menu {
+    display: none;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#hamburger-icon {
+    font-size: 30;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+}
+
+#mobile-hrefs {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999999;
+    opacity: 0.98;
+    background-color: #fff;
+    display: none;
+}
+
+#mobile-hrefs .content-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 10%;
+    align-items: center;
+}
+
+#mobile-hrefs .content-container Link {
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+#mobile-hrefs .content-container * {
+    text-align: center;
+    font-weight: 400;
+    margin-top: 2%;
+    max-width: 100%;
+}
+
+#mobile-hrefs .content-container h1 {
+    color: rgb(50,50,50);
+    text-align: center;
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.close-button-container {
+    display: flex;
+    justify-content: right;
+    padding: 20px 20px;
+}
+
+.close-button-container button {
+    background-color: transparent;
+    color: rgb(50,50,50);
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    border: none
+}
+
+#search-box-mobile {
+    margin-top: 4%;
+    color: red;
+    width: 250px;
+    align-self: center;
+    justify-content: center;
+    margin: 10% 0 0 0 !important;
+    padding: 0 !important;
+    height: 35px;
+    transition: 300ms ease;
+    border-radius: 0px;
+    border: 0px solid transparent;
+    border-bottom: 1.5px solid rgb(50,50,50);
+}
+
+#search-box-mobile:focus {
+    width: 400px;
+    transition: 300ms ease;
+}
+
+@media (max-width: 1200px) {
+    #search-box:focus {
+        width: 250px !important;
+    }
+}
+
+.action-buttons-responsive {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+}
+
+#log-in-link-resp {
+    margin-right: 10%;
+}
+
+#sign-up-button-resp {
+    color: white;
+}
+
+
+
+/* Responsive Header - Shrink Search Box */
+/* @media (max-width: 959px) {
+
+    #search-box {
+        width: 150px;
+    }
+
+    #search-box:focus {
+        width: 150px !important;
+    }
+
+} */
+
+/* Responsive Header - Hamburger Menu */
+@media (max-width: 841px) {
+
+    #search-box {
+        width: 200px;
+    }
+
+    #search-box:focus {
+        width: 200px !important;
+    }
+    
+}
+
+@media (max-width: 730px) {
+    .right-header {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    #search-box:focus {
+        width: 150px;
+    }
+}
+
+
+
+
