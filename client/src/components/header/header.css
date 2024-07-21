@@ -190,11 +190,21 @@
     transition: 300ms ease;
 }
 
+@media (max-width: 1200px) {
+    #search-box:focus {
+        width: 250px !important;
+    }
+}
+
 /* Responsive Header - Shrink Search Box */
 @media (max-width: 959px) {
 
     #search-box {
         width: 150px;
+    }
+
+    #search-box:focus {
+        width: 150px !important;
     }
 
 }
@@ -212,6 +222,10 @@
 
     .hamburger-menu {
         display: flex;
+    }
+
+    #search-box:focus {
+        width: 150px;
     }
     
 }
