@@ -30,7 +30,6 @@ const App = () => {
               <Footer /><br />
             </Container>
           </>
-
         }
       />
       <Route
