@@ -1,6 +1,4 @@
-import { /* afterAll, afterEach, beforeAll, */ expect, test } from 'vitest';
-// import { http, HttpResponse } from 'msw';
-// import { setupServer } from 'msw/node';
+import { expect, test } from 'vitest';
 import { render, fireEvent, screen } from '@testing-library/react';
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import InputButton from './button';
