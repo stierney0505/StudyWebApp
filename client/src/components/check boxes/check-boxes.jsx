@@ -25,7 +25,7 @@ const CheckBoxes = ({options, ...props}) => {
     return (
         <body {...props} >
             {options?.map((option, index) => (
-                <label key={index} className="container-chbx">{option.value}
+                <label key={index} id="label-chbx" className="container-chbx">{option.value}
                     <input 
                         type="checkbox"
                         value={option.value}
