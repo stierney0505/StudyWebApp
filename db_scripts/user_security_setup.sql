@@ -20,6 +20,7 @@ create table `users` (
     `security_id` int DEFAULT NULL,
     PRIMARY KEY (`id`),
     KEY `FK_SECURITY_idx` (`security_id`),
+    UNIQUE KEY `unique_email` (`email`),
     CONSTRAINT `FK_SECURITY` FOREIGN KEY (`security_id`) REFERENCES `security` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB auto_increment=1 default charset=latin1;
 

@@ -4,6 +4,7 @@ import com.example.server.entities.Security;
 import com.example.server.entities.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +28,15 @@ public class UserDAOImpl implements UserDAO {
         user.setSecurity(security);
         security.setUser(user);
         em.merge(user);
+    }
+
+    @Override
+    public User login(String email, String password) {
+        // Uses parameters so should be safe from SQL injection
+        String preparedQueryString = "from User where email = :email and password = :password";
+        TypedQuery<User> preparedQuery = em.createQuery(preparedQueryString, User.class)
+                .setParameter("email", email).setParameter("password", password);
+        return preparedQuery.getSingleResult();
     }
 
     @Override
