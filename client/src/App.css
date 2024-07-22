@@ -4,6 +4,7 @@ html, body {
   width: 100%;
   height: 100%;
   box-sizing: border-box; /* Ensure padding and border are included in the width and height */
+  background-color: var(--background) !important;
 }
 
 *,

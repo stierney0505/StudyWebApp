@@ -1,16 +1,16 @@
 .container-link {
     text-decoration: none;
-    color: rgb(100, 100, 100);
+    color: var(--on-background);
     background:
     linear-gradient(
       to right,
-      rgba(100, 200, 200, 0),
-      rgba(100, 200, 200, 0)
+      var(--on-background),
+      var(--on-background)
     ),
     linear-gradient(
       to right,
-      #6426cf,
-      #531CB3
+      var(--primary),
+      var(--primary-hover)
     );
     background-size: 0 2px, 0 2px;
     background-position: 0 100%, 0% 100%;
@@ -24,5 +24,5 @@
 
 .container-link-no-underline {
   text-decoration: none;
-  color: rgb(100, 100, 100);
+  color: var(--on-background);
 }

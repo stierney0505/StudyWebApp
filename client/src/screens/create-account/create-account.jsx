@@ -1,12 +1,13 @@
 import { useId, useState } from 'react';
 import axios from 'axios';
+import { Helmet } from 'react-helmet';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './create-account.module.css';
 
 import TextField from '../../components/text-field/text-field';
 import Button from '../../components/button/button';
 import Link from '../../components/links/link';
-import { useNavigate } from 'react-router-dom';
 
 const CreateForm = () => {
   const id = useId();
@@ -34,6 +35,9 @@ const CreateForm = () => {
 
   return (
     <>
+      <Helmet>
+          <title>Create Account</title>
+      </Helmet>
       <h1 className={ [styles.heading, styles['poppins-bold']].join(' ') }>Create an Account</h1>
       <form method='post' onSubmit={createAccount} >
         <div className={ [styles['name-group'], styles['form-line']].join(' ') }>

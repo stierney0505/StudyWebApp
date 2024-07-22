@@ -3,7 +3,7 @@ body {
 }
 
 .login-container {
-    background-color: rgb(248, 248, 248);
+    background-color: var(--surface);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,7 +13,7 @@ body {
 }
 
 .login-form {
-    background-color: white;
+    background-color: var(--background);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -26,6 +26,7 @@ body {
     font-weight: 600;
     margin-bottom: 10px;
     text-align: center;
+    color: var(--on-surface);
 }
 
 #header-secondary {
@@ -33,6 +34,7 @@ body {
     font-weight: 500;
     margin-bottom: 20px;
     text-align: center;
+    color: var(--on-surface);
 }
 
 .login-fields {
@@ -49,7 +51,7 @@ body {
     width: 100%;
     height: 50px;
     margin-bottom: 20px; 
-    border-color: red;
+    border-color: var(--error);
 }
 
 #lg_username_id label {
@@ -57,19 +59,19 @@ body {
 }
 
 #lg_username_id_error label {
-    color: red;
+    color: var(--error);
     transform: translateY(-90%);
 }
 
 #lg_password_id_error label {
-    color: red;
+    color: var(--error);
 }
 
 #lg_username_id input:focus~label,
 #lg_username_id input:valid~label {
     bottom: 10 !important;
     font-size: 12px;
-    background: white;
+    background: var(--background);
     transition: 0.5s ease;
     transform: translateY(-50%);
 }
@@ -78,7 +80,7 @@ body {
 #lg_username_id_error input:valid~label {
     bottom: 10 !important;
     font-size: 12px;
-    background: white;
+    background: var(--background);
     transition: 0.5s ease;
     transform: translateY(-50%);
 }
@@ -91,20 +93,15 @@ body {
 #lg-password-error {
     width: 100%;
     height: 50px;
-    border-color: red;
+    border-color: var(--error);
 }
 
 #submit-button {
     margin-top: 15px;
 }
 
-#submit-button:hover {
-    background-color: #3A147E;
-    color: #dfdfdf; 
-}
-
 #or-header {
-    color: rgb(50,50,50);
+    color: var(--on-background);
     font-size: 12px;
     text-align: center;
     margin-top: 10px;
@@ -122,7 +119,7 @@ body {
 
 #error-text {
     font-size: 15px;
-    color: red;
+    color: var(--error);
     text-align: center;
     margin-top: 15px;
 }
@@ -133,7 +130,7 @@ body {
     }
 
     .login-form {
-        background-color: rgb(248, 248, 248);
+        background-color: var(--surface);
     }
 }
 

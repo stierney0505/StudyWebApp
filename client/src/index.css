@@ -1,5 +1,45 @@
-:root {
+[data-theme="false"] {
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
   font-style: normal;
+
+  /* Color pallete */
+  --background: #fff;
+  --surface: rgb(248, 248, 248);
+  --primary: #531CB3;
+  --secondary: #FDCA40;
+  --on-background: rgb(50,50,50);
+  --on-surface: rgb(25,25,25);
+  --on-primary: #fff;
+  --on-secondary: rgb(50,50,50);
+  --primary-hover: #46159b;
+  --secondary-hover: #efbe37;
+  --on-primary-hover: #dfdfdf; 
+  --on-secondary-hover: rgb(41, 41, 41);
+
+  /* MISC */
+  --placeholder: rgb(100,100,100);
+  --dark: rgb(50,50,50);
+  --error: red;
+  
+}
+
+[data-theme="true"] {
+  --background: #1a1a1a;
+  --surface: #282828;
+  --primary: #814adf;
+  --secondary: #FDCA40;
+  --on-background: rgb(245,245,245);
+  --on-surface: rgb(245,245,245);
+  --on-primary: #fff;
+  --on-secondary: rgb(50,50,50);
+  --primary-hover: #6f3cc8;
+  --secondary-hover: #efbe37;
+  --on-primary-hover: #ececec;
+  --on-secondary-hover: rgb(41, 41, 41);
+
+  /* MISC */
+  --placeholder: rgb(200,200,200);
+  --dark: rgb(50,50,50);
+  --error: rgb(250, 63, 63);
 }

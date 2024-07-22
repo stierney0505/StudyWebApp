@@ -15,7 +15,7 @@
     left: 15px;
     transform: translateY(-50%);
     font-size: 16px;
-    color: rgb(50,50,50);
+    color: var(--on-background);
     padding: 0 5px;
     pointer-events: none;
 
@@ -28,10 +28,10 @@
     width: 300px;
     height: 40px;
     font-size: 16px;
-    color: rgb(50,50,50);
+    color: var(--on-background);
     padding: 3px 10px;
     background: transparent;
-    border: 1.5px solid rgb(50,50,50);
+    border: 1.5px solid var(--on-background);
     outline: none;
     border-radius: 15px;
 }
@@ -53,12 +53,12 @@
 .select-group select:valid~label {
     top: 0;
     font-size: 12px;
-    background: white;
+    background: var(--surface);
     transition: 0.5s ease;
 }
 
 .select-group select:focus,
 .input-grtoup select:valid {
-    border: 1.5px solid #531CB3;
+    border: 1.5px solid var(--primary);
     transition: 0.5s ease;
 }

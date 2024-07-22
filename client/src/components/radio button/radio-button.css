@@ -24,6 +24,10 @@
   cursor: pointer;
 }
 
+#radio-label {
+  color: var(--on-surface);
+}
+
 .checkmark {
   position: absolute;
   left: 0;
@@ -31,15 +35,15 @@
   width: 18px;
   background-color: transparent;
   border-radius: 50%;
-  border: 2px solid #531CB3;
+  border: 2px solid var(--primary);
 }
 
 .container:hover input ~ .checkmark {
-  background-color: #eee;
+  background-color: var(--surface);
 }
 
 .container input:checked ~ .checkmark {
-  background-color: #531CB3
+  background-color: var(--primary);
 }
 
 .checkmark:after {
@@ -58,5 +62,5 @@
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  border: 2px solid white;
+  border: 2px solid var(--surface);
 }
