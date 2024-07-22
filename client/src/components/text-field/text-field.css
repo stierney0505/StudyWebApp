@@ -37,7 +37,8 @@
 }
 
 .input-group input:focus~label,
-.input-group input:valid~label {
+.input-group input:valid~label,
+.input-group input:not([value=""])~label {
     top: 0;
     font-size: 12px;
     background: var(--surface);

@@ -15,4 +15,5 @@ public interface UserDAO {
     User updateUser(User user, int id) throws Exception;
     void deleteUser(int id);
     void createSecurity(User user, Security security);
+    User login(String username, String password);
 }

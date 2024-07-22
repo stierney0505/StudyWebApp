@@ -1,24 +1,35 @@
 package com.example.server.security;
 
+import com.example.server.services.JwtService;
+import io.jsonwebtoken.Jwt;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-// Basic, temporary security configuration that allows for all requests to be authorized.
 @Configuration
 @EnableWebSecurity
 public class UserSecurityConfig {
 
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(configurer -> configurer
-                .anyRequest().permitAll()
-        );
-        http.httpBasic(httpBasic -> httpBasic.disable());
-        http.csrf(csrf -> csrf.disable());
+    @Autowired
+    private JwtRequestFilter jwtRequestFilter;
 
+    @Bean
+    public SecurityFilterChain jwtChain(HttpSecurity http) throws Exception {
+
+        http
+            .csrf(csrf -> csrf.disable())
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .authorizeHttpRequests(authorize -> authorize.requestMatchers("/auth").permitAll()
+                    .anyRequest().authenticated())
+            .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
 }
+
