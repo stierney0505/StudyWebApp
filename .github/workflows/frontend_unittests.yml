@@ -18,12 +18,12 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: |
           cd client
           npm ci
-      
+
       - name: Run tests
         run: |
           cd client
