@@ -1,11 +1,11 @@
 import './header.css';
 import { useState } from "react";
-import Link from '../links/link';
+import Link from '../../links/link';
 import { Settings, UserAvatar, Menu } from "@carbon/icons-react";
-import TextField from '../text-field/text-field';
-import { LTxt } from '../text/text';
+import TextField from '../../text-field/text-field';
+import { LTxt } from '../../text/text';
 
-const Header = () => {
+const SessionHeader = () => {
 
     const [searchValue, setSearchValue] = useState('');
     const [mobileNavDisplay, setMobileNavDisplay] = useState(false);
@@ -65,4 +65,4 @@ const Header = () => {
     );
 }
 
-export default Header;
+export default SessionHeader;

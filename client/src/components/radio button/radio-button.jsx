@@ -15,7 +15,7 @@ const RadioButton = ({options, ...props}) => {
     return (
         <body {...props}>
             {options?.map((option, index) => (
-                <label key={index} className="container">{option.value}
+                <label key={index} id="radio-label" className="container">{option.value}
                     <input 
                         type="radio" 
                         name="option" 

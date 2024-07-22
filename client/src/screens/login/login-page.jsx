@@ -4,6 +4,7 @@ import InputButton from "../../components/button/button";
 import './login-page.css';
 import Link from "../../components/links/link";
 import { useForm } from "react-hook-form";
+import { Helmet } from "react-helmet";
 
 const LoginPage = () => {
 
@@ -21,7 +22,10 @@ const LoginPage = () => {
     }
 
     return (
-        <>
+        <>  
+            <Helmet>
+                <title>Log In</title>
+            </Helmet>
             <div className="login-container">
                 <form method="" onSubmit={handleSubmit(onSubmit)} className="login-form">
                     <LTxt id="header-main">Study Web App</LTxt>
