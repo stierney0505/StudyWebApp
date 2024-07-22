@@ -1,13 +1,9 @@
 name: Run Unit Tests
 
 on:
-  push:
-    branches: 
-      - '*'         # matches every branch that doesn't contain a '/'
-      - '*/*'       # matches every branch containing a single '/'
-      - '**'        # matches every branch
   pull_request:
-    branches:  "main"
+    branches:
+      - '**' # Matches all branches
 
 jobs:
   unit-test:
@@ -23,5 +19,12 @@ jobs:
           node-version: 20
           cache: 'npm'
       
-      - run: npm ci
-      - run: npm test
+      - name: Install dependencies
+        run: |
+          cd client
+          npm ci
+      
+      - name: Run tests
+        run: |
+          cd client
+          npm test
