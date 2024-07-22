@@ -1,27 +1,22 @@
 name: Run Unit Tests
 
 on:
-    push:
-      branches: 
-        - '*'         # matches every branch that doesn't contain a '/'
-        - '*/*'       # matches every branch containing a single '/'
-        - '**'        # matches every branch
-    pull_request:
-      branches:  "main"
+  pull_request:
+    branches:
+      - '**'  # Matches all branches, or specify specific branches if needed
 
 jobs:
   build:
-    if: ${{ github.event_name == 'push' || github.event.pull_request.merged == true }}
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    - name: Set up JDK 22
+    - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
-        distribution: 'temurin' # See 'Supported distributions' for available options
+        distribution: 'temurin'  # See 'Supported distributions' for available options
         java-version: '17'
 
     - name: Cache Maven packages
@@ -36,7 +31,7 @@ jobs:
       run: |
         cd server
         mvn install -DskipTests
-    
+
     - name: Set up application-test.properties
       run: |
         cd server/src/main/resources

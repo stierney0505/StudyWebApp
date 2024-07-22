@@ -2,7 +2,7 @@ package com.example.server.routes;
 
 import com.example.server.entities.Security;
 import com.example.server.entities.User;
-import com.example.server.services.UserService;
+import com.example.server.services.route_services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
