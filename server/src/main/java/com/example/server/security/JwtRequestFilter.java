@@ -1,6 +1,7 @@
 package com.example.server.security;
 
 import com.example.server.services.JwtService;
+import com.example.server.utils.RouteWhiteList;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
@@ -32,13 +33,17 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     @Autowired
     private HandlerExceptionResolver handlerExceptionResolver;
 
+    @Autowired
+    private RouteWhiteList routeWhiteList;
+
     @Value("${jwt.access.name}")
     private String accessTokenName;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         RequestMatcher ignoredPath = new AntPathRequestMatcher("/api/auth");
-        if (ignoredPath.matches(request) && request.getMethod().equals("POST")) {
+
+        if (routeWhiteList.inWhitelist(request.getRequestURI()) && request.getMethod().equals("POST")) {
             filterChain.doFilter(request, response);
             return;
         }

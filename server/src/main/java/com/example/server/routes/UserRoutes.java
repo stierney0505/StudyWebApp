@@ -3,9 +3,11 @@ package com.example.server.routes;
 import com.example.server.entities.Security;
 import com.example.server.entities.User;
 import com.example.server.services.route_services.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -21,7 +23,7 @@ public class UserRoutes {
     @PostMapping("${routes.users}")
     public User addUser(@RequestBody User user) {
         user.setId(0); //Set id to 0 to force the id to be auto incremented by DB
-        userService.saveUser(user);
+        userService.createUser(user);
         return user;
     }
 
@@ -36,15 +38,13 @@ public class UserRoutes {
     }
 
     @PutMapping("${routes.users}/{id}")
-    public User updateUser(@PathVariable int id, @RequestBody User user) throws Exception {
+    public User updateUser(@PathVariable int id, @Valid @RequestBody User user) throws Exception {
         User returnUser = userService.updateUser(user, id);
         return ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON).body(returnUser).getBody();
     }
 
     @DeleteMapping("${routes.users}/{id}")
-    public void deleteUser(@PathVariable int id) {
-        userService.deleteUser(id);
-    }
+    public void deleteUser(@PathVariable int id) { userService.deleteUser(id); }
 
     @PostMapping("${routes.users}/securityDemo/{id}")
     public Security createSecurityDemo(@PathVariable int id) {

@@ -2,10 +2,13 @@ package com.example.server.dao;
 
 import com.example.server.entities.Security;
 import com.example.server.entities.User;
+import com.example.server.utils.validation.PasswordValid;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.TypedQuery;
+import jakarta.validation.constraints.Email;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
@@ -15,8 +18,13 @@ public class UserDAOImpl implements UserDAO {
 
     private EntityManager em;
 
+    private PasswordEncoder passwordEncoder;
+
     @Autowired
-    public UserDAOImpl(EntityManager em) { this.em = em; }
+    public UserDAOImpl(EntityManager em, PasswordEncoder passwordEncoder) {
+        this.em = em;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     @Transactional
@@ -31,12 +39,14 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User login(String email, String password) {
+    public User login(@Email String email, @PasswordValid String password) {
         // Uses parameters so should be safe from SQL injection
-        String preparedQueryString = "from User where email = :email and password = :password";
+        String preparedQueryString = "from User where email = :email";
         TypedQuery<User> preparedQuery = em.createQuery(preparedQueryString, User.class)
-                .setParameter("email", email).setParameter("password", password);
-        return preparedQuery.getSingleResult();
+                .setParameter("email", email);
+        User testUser = preparedQuery.getSingleResult();
+        if (passwordEncoder.matches(password, testUser.getPassword())) { return testUser; }
+        return null;
     }
 
     @Override
