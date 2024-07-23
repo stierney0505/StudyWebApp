@@ -8,6 +8,9 @@ on:
 jobs:
   unit-test:
     runs-on: ubuntu-latest
+    defaults:
+       run:
+         working-directory: ./client
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -17,13 +20,10 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
+          cache-dependency-path: client/package-lock.json
 
       - name: Install dependencies
-        run: |
-          cd client
-          npm ci
+        run: npm ci
 
       - name: Run tests
-        run: |
-          cd client
-          npm test
+        run: npm test
