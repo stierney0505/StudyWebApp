@@ -22,6 +22,7 @@ import RequestPasswordReset from './screens/reset-password/request-password-rese
 import PasswordResetRequestSent from './screens/reset-password/password-reset-request-sent/password-reset-request-sent.jsx';
 import ChangePassword from './screens/reset-password/change-password/change-password.jsx';
 import PasswordSuccessfullyChanged from './screens/reset-password/password-successfully-changed/password-successfully-changed.jsx';
+import ModifyAccount from './screens/modify-account/modify-account.jsx';
 
 
 const App = () => {
@@ -113,6 +114,14 @@ const App = () => {
         element={
           <>
             <PasswordSuccessfullyChanged />
+          </>
+        }
+      />
+      <Route
+        path="/modify-account/"
+        element={
+          <>
+            <ModifyAccount />
           </>
         }
       />
