@@ -7,6 +7,7 @@ import jakarta.servlet.http.Cookie;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -81,15 +82,13 @@ public class UserRoutesTest {
 
         @Test
         public void createUser() throws Exception {
-            User provideUser = new User("Large", "Man", "lman@gmail.com", "testpassword");
+            User provideUser = new User("Large", "Man", "largeman@gmail.com", "testpassworD+12");
 
             // It doesn't matter that the mocked return user doesn't match the expected values that the service would provide
             // because these tests test for formatting and endpoints.
             when(service.saveUser(provideUser)).thenReturn(provideUser);
 
             mockMvc.perform(post(endPoint)
-                            .cookie(utilFunctions.getJwtCookie("bjones@gmail.com"))
-                            .accept("application/json")
                             .contentType("application/json")
                             .content(Obj.writeValueAsString(provideUser)))
                     .andExpect(status().isOk()) // Check for HTTP 200 OK status
@@ -106,7 +105,7 @@ public class UserRoutesTest {
 
         @Test
         public void updateUser() throws Exception {
-            User provideUser = new User("Large", "Man", "lman@gmail.com", "testpassword");
+            User provideUser = new User("Large", "Man", "lman@gmail.com", "testpassword12+G");
             // It doesn't matter that the mocked return user doesn't match the expected values that the service would provide
             // because these tests test for formatting and endpoints.
             when(service.updateUser(provideUser, 1)).thenReturn(provideUser);

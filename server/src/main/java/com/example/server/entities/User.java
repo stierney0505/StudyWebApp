@@ -34,7 +34,7 @@ public class User {
     private String password;
 
     @OneToOne(cascade=CascadeType.ALL)
-    @JoinColumn(name = "security_id")
+    @JoinColumn(name = "security_id", nullable = true)
     @JsonIgnore
     private Security security;
 

@@ -44,9 +44,7 @@ public class UserRoutes {
     }
 
     @DeleteMapping("${routes.users}/{id}")
-    public void deleteUser(@PathVariable int id) {
-        userService.deleteUser(id);
-    }
+    public void deleteUser(@PathVariable int id) { userService.deleteUser(id); }
 
     @PostMapping("${routes.users}/securityDemo/{id}")
     public Security createSecurityDemo(@PathVariable int id) {
