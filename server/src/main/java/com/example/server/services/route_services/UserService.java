@@ -2,6 +2,7 @@ package com.example.server.services.route_services;
 
 import com.example.server.entities.Security;
 import com.example.server.entities.User;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -14,4 +15,5 @@ public interface UserService {
     void deleteUser(int id);
     Security demoCreateSecurity(int id);
     public void initPasswordReset(int id);
+    public User createUser(@Valid User user);
 }

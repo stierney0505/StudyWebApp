@@ -3,8 +3,10 @@ package com.example.server.services.route_services;
 import com.example.server.dao.UserDAO;
 import com.example.server.entities.Security;
 import com.example.server.entities.User;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,13 +22,26 @@ public class UserServiceImpl implements UserService {
     @Value("${resetKey.expiry.minutes}")
     private int expiryMinutes;
 
+    private PasswordEncoder passwordEncoder;
+
     private UserDAO userDAO;
 
     @Autowired
-    public UserServiceImpl(UserDAO userDAO) { this.userDAO = userDAO; }
+    public UserServiceImpl(UserDAO userDAO, PasswordEncoder passwordEncoder) {
+        this.userDAO = userDAO;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public User saveUser(User user) {
+        userDAO.save(user);
+        return user;
+    }
+
+
+    @Override
+    public User createUser(@Valid User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDAO.save(user);
         return user;
     }
@@ -42,7 +57,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User updateUser(User user, int id) throws Exception {
+    public User updateUser(@Valid User user, int id) throws Exception {
         return userDAO.updateUser(user, id);
     }
 

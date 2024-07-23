@@ -1,7 +1,12 @@
 package com.example.server.entities;
 
+import com.example.server.utils.validation.PasswordValid;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Table(name="users")
@@ -13,15 +18,19 @@ public class User {
     private int id;
 
     @Column(name="first_name")
+    @NotBlank
     private String firstName;
 
     @Column(name="last_name")
+    @NotBlank
     private String lastName;
 
     @Column(name="email")
+    @Email
     private String email;
 
     @Column(name="password")
+    @PasswordValid
     private String password;
 
     @OneToOne(cascade=CascadeType.ALL)

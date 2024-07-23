@@ -38,7 +38,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         RequestMatcher ignoredPath = new AntPathRequestMatcher("/api/auth");
-        if (ignoredPath.matches(request) && request.getMethod().equals("POST")) {
+        String test = request.getRequestURI();
+        if ((request.getRequestURI().equals("/api/auth") || request.getRequestURI().equals("/api/users")) && request.getMethod().equals("POST")) {
             filterChain.doFilter(request, response);
             return;
         }

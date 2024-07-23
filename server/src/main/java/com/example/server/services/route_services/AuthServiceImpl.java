@@ -14,7 +14,5 @@ public class AuthServiceImpl implements AuthService{
     public AuthServiceImpl(UserDAO userDAO) { this.userDAO = userDAO; }
 
     @Override
-    public User login(String email, String password) {
-        return userDAO.login(email, password);
-    }
+    public User login(String email, String password) { return userDAO.login(email, password); }
 }
