@@ -7,8 +7,10 @@ on:
 
 jobs:
   unit-test:
-    if: ${{ github.event_name == 'push' || github.event.pull_request.merged == true }}
     runs-on: ubuntu-latest
+    defaults:
+       run:
+         working-directory: ./client
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
