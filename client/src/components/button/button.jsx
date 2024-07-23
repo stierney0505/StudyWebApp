@@ -10,6 +10,7 @@ const InputButton = ({text, URL, ...props}) => {
             navigate(route)
     }
 
+
     return (
         <button
             className='button'
