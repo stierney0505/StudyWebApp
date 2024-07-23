@@ -1,0 +1,30 @@
+name: Run Front-End Unit Tests
+
+on:
+  pull_request:
+    branches:
+      - '**' # Matches all branches
+
+jobs:
+  unit-test:
+    if: ${{ github.event_name == 'push' || github.event.pull_request.merged == true }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          cd client
+          npm ci
+
+      - name: Run tests
+        run: |
+          cd client
+          npm test
