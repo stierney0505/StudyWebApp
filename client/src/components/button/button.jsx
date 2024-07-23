@@ -11,7 +11,11 @@ const InputButton = ({text, URL, ...props}) => {
     }
 
     return (
-        <button className='button' onClick={() => navigateRoute(URL)} {...props}>
+        <button
+            className='button'
+            onClick={() => navigateRoute(URL)}
+            {...props}
+        >
             {text}
         </button>
     );
