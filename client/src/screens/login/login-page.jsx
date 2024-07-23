@@ -58,7 +58,7 @@ const LoginPage = () => {
                         {(errors.username) && <STxt id="error-text">{errors.username.message}</STxt>}
                         {(errors.password && !errors.username) && <STxt id="error-text">{errors.password.message}</STxt>}
                     </div>
-                    <InputButton id="submit-button" text="Log In"/>
+                    <InputButton id="submit-button" text="Log In" type="submit" />
                     <STxt id="or-header">─── Or ───</STxt>
                     <Link href="/create-account" id="create-account-link"><STxt>Don&apos;t have an account? Create one</STxt></Link>
 

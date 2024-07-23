@@ -6,8 +6,11 @@ import TextField from '../../text-field/text-field';
 import InputButton from '../../button/button';
 import Logo from './../../../../assets/logo.svg';
 import LogoDark from './../../../../assets/logo-dark.svg';
+import { useNavigate } from 'react-router-dom';
 
 const NoSessionHeader = ({darkMode, toggleDarkMode}) => {
+
+    const navigate = useNavigate();
 
     const [searchValue, setSearchValue] = useState('');
     const [mobileNavDisplay, setMobileNavDisplay] = useState(false);
@@ -32,7 +35,7 @@ const NoSessionHeader = ({darkMode, toggleDarkMode}) => {
             <div className='right-header'>
                 <TextField fieldId="search-box" type="text" value={searchValue} onChange={(e) => setSearchValue(e.target.value)} placeholder="Search Sets" />
                 <Link href="/login" id="log-in-link" underline={true} >Log In</Link>
-                <InputButton text={"Get Started"} URL="/create-account" id="sign-up-button"/>
+                <InputButton text={"Get Started"} onClick={() => navigate("/create-account")} id="sign-up-button"/>
                 <Link href="#" id="toggle-dark-mode" onClick={toggleDarkMode}>
                     { !darkMode ? <AsleepFilled size={25}/> : <LightFilled size={25}/>}
                 </Link>
@@ -50,7 +53,7 @@ const NoSessionHeader = ({darkMode, toggleDarkMode}) => {
                     <Link href="/"><h1>Study Web App</h1></Link>
                     <div className="action-buttons-responsive">
                         <Link href="/login" id="log-in-link-resp" underline={true} >Log In</Link>
-                        <InputButton text={"Get Started"} URL="/create-account" id="sign-up-button"/>
+                        <InputButton text={"Get Started"} onClick={() => navigate("/create-account")} id="sign-up-button"/>
                     </div>
                     <TextField fieldId="search-box-mobile" type="text" value={searchValue} onChange={(e) => setSearchValue(e.target.value)} placeholder="Search Sets" />
                 </div>

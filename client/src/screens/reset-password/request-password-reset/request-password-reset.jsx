@@ -3,7 +3,7 @@ import { useId, useState } from 'react';
 import styles from './request-password-reset.module.css';
 
 import TextField from '../../../components/text-field/text-field';
-import Button from '../../../components/button/button';
+import InputButton from '../../../components/button/button';
 import { useNavigate } from 'react-router-dom';
 
 const RequestResetForm = () => {
@@ -33,8 +33,8 @@ const RequestResetForm = () => {
           />
         </div>
         <div className={styles['button-line']}>
-          <Button type={'button'} text={'Back to Login'} URL={'/login'} />
-          <Button type={'submit'} text={'Submit'} />
+          <InputButton type={'button'} text={'Back to Login'} onClick={() => navigate('/login')} />
+          <InputButton type={'submit'} text={'Submit'} />
         </div>
       </form>
     </>

@@ -3,7 +3,7 @@ import { useId, useState } from 'react';
 import styles from './create-account.module.css';
 
 import TextField from '../../components/text-field/text-field';
-import Button from '../../components/button/button';
+import InputButton from '../../components/button/button';
 import Link from '../../components/links/link';
 import { Helmet } from 'react-helmet';
 
@@ -98,7 +98,7 @@ const CreateForm = () => {
           <Link href={'/login'} underline={true}>Click here!</Link>
         </div>
         <div className={styles['button-line']}>
-          <Button type={'submit'} text={'Submit'} />
+          <InputButton type={'submit'} text={'Submit'} />
         </div>
       </form>
     </>
