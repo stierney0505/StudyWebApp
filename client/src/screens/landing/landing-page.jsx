@@ -4,8 +4,11 @@ import InputButton from "../../components/button/button";
 import { LTxt, MTxt, STxt } from "../../components/text/text";
 import { Education, Notebook, GroupPresentation } from "@carbon/icons-react";
 import { Helmet } from 'react-helmet';
+import CheckBoxes from '../../components/check boxes/check-boxes';
 
 const LandingPage = () => {
+
+    const optionsOne = [{value: "Value One", checked: true}, {value: "Value Two", checked: false}]
 
     return (
         <>
@@ -16,6 +19,8 @@ const LandingPage = () => {
 
             {/* Hero Section */}
             <div className="hero-section">
+                <CheckBoxes options={optionsOne} />
+
                 <div className="text-main">
                     <LTxt id="text-main-L">Enhancing Knowledge</LTxt>
                     <MTxt id="text-main-M">With Dynamic Study Material</MTxt>
