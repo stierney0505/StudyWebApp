@@ -6,11 +6,8 @@ import { Education, Notebook, GroupPresentation } from "@carbon/icons-react";
 import { Helmet } from 'react-helmet';
 
 //temp
-import RadioButton from '../../components/radio button/radio-button';
 
 const LandingPage = () => {
-
-    const optionsOne = [{value: "Option One", checked: false}, {value: "Option Two", checked: false}, {value: "Option Three", checked: true}];
 
     return (
         <>
@@ -21,7 +18,6 @@ const LandingPage = () => {
 
             {/* Hero Section */}
             <div className="hero-section">
-                <RadioButton data-testid="radioButton" options={optionsOne}/>
                 <div className="text-main">
                     <LTxt id="text-main-L">Enhancing Knowledge</LTxt>
                     <MTxt id="text-main-M">With Dynamic Study Material</MTxt>
