@@ -6,7 +6,7 @@ const optionsOne = [{value: "Value One", checked: true}, {value: "Value Two", ch
 const optionsTwo = [{value: "Value One", checked: false}, {value: "Value Two", checked: false}, {value: "Value Three", checked: false}];
 const optionsThree = [{value: "Value One", checked: true}, {value: "Value Two", checked: true}, {value: "Value Three", checked: true}, {value: "Value Four", checked: true}];
 
-test('Checkbox with two options -> one selected', () => {
+test('Checkboxes with two options -> one selected', () => {
     render(<CheckBoxes data-testid="checkbox" options={optionsOne} />);
 
     const checkbox = screen.getByTestId('checkbox');
@@ -30,7 +30,7 @@ test('Checkbox with two options -> one selected', () => {
     }
 });
 
-test("CheckBox with three options -> none selected", () => {
+test("CheckBoxes with three options -> none selected", () => {
     render(<CheckBoxes data-testid="checkbox" options={optionsTwo} />);
 
     const checkbox = screen.getByTestId('checkbox');
@@ -57,7 +57,7 @@ test("CheckBox with three options -> none selected", () => {
     }
 });
 
-test("CheckBox with four options -> All Selected", () => {
+test("CheckBoxes with four options -> All Selected", () => {
     render(<CheckBoxes data-testid="checkbox" options={optionsThree} />);
 
     const checkbox = screen.getByTestId('checkbox');
