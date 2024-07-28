@@ -1,14 +1,18 @@
 package com.example.server.routes;
 
 import com.example.server.entities.User;
+import com.example.server.errors.auth.FailedLoginException;
 import com.example.server.services.JwtService;
 import com.example.server.services.JwtUser;
 import com.example.server.services.route_services.AuthService;
+import com.example.server.utils.responses.Response;
+import com.example.server.utils.responses.ResponseGenerator;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import jakarta.servlet.http.Cookie;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -30,7 +34,7 @@ public class AuthRoutes extends Routes {
     }
 
     @PostMapping("${routes.login}")
-    public String login(@RequestBody Map<String, String> loginData) {
+    public ResponseEntity<Response<Object>> login(@RequestBody Map<String, String> loginData) {
         User result = authService.login(loginData.get("email"), loginData.get("password"));
 
         if (result != null) {
@@ -42,8 +46,10 @@ public class AuthRoutes extends Routes {
             cookie.setMaxAge((int) jwtService.getAccessExpiry() / 1000 );
 
             httpServletResponse.addCookie(cookie);
-            return "Check success?";
-        } else { return "FAILURE"; }
+            return ResponseGenerator.CreateSuccessResponse(new Response<>(null, "LOGIN_SUCCESSFUL", 200));
+        } else {
+            throw new FailedLoginException();
+        }
     }
 
     @GetMapping("${routes.login}")
