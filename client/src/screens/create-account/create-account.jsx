@@ -1,14 +1,17 @@
 import { useId, useState } from 'react';
+import axios from 'axios';
+import { Helmet } from 'react-helmet';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './create-account.module.css';
 
 import TextField from '../../components/text-field/text-field';
 import Button from '../../components/button/button';
 import Link from '../../components/links/link';
-import { Helmet } from 'react-helmet';
 
 const CreateForm = () => {
   const id = useId();
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     fname: '',
     lname: '',
@@ -19,12 +22,19 @@ const CreateForm = () => {
 
   function createAccount(event) {
     event.preventDefault();
-    console.log(form);
+    axios.post(`${import.meta.env.VITE_SERVER_URI}/api/user`, form)
+      .then(function (response) {
+        if (response.data.success) {
+          navigate('/dashboard')
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   return (
     <>
-
       <Helmet>
           <title>Create Account</title>
       </Helmet>
@@ -34,7 +44,7 @@ const CreateForm = () => {
           <TextField
             fieldId={id + '-fname'}
             text={'First Name'}
-            name={'fname'}
+            name={id + '-fname'}
             type={'text'}
             value={form.fname}
             onChange={e => setForm({
@@ -45,7 +55,7 @@ const CreateForm = () => {
           <TextField
             fieldId={id + '-lname'}
             text={'Last Name'}
-            name={'lname'}
+            name={id + '-lname'}
             type={'text'}
             value={form.lname}
             onChange={e => setForm({
@@ -58,7 +68,7 @@ const CreateForm = () => {
           <TextField
             fieldId={id + '-email'}
             text={'Email'}
-            name={'email'}
+            name={id + '-email'}
             type={'email'}
             value={form.email}
             onChange={e => setForm({
@@ -71,7 +81,7 @@ const CreateForm = () => {
           <TextField
             fieldId={id + '-password'}
             text={'Password'}
-            name={'password'}
+            name={id + '-password'}
             type={'password'}
             value={form.password}
             onChange={e => setForm({
@@ -84,7 +94,7 @@ const CreateForm = () => {
           <TextField
             fieldId={id + '-confirmPassword'}
             text={'Confirm Password'}
-            name={'confirm-password'}
+            name={id + '-confirmPassword'}
             type={'password'}
             value={form.confirmPassword}
             onChange={e => setForm({
