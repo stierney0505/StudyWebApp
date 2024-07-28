@@ -3,10 +3,10 @@ package com.example.server.services;
 public class JwtUser {
 
     private String email;
-    public String test;
+    public int id;
 
-    public JwtUser(String email) { this.email = email;
-    test = "Test"; }
+    public JwtUser(String email, int id) { this.email = email; this.id = id; }
 
     public String getEmail() { return email; }
+    public Integer getId() { return id; }
 }

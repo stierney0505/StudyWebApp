@@ -15,18 +15,17 @@ import java.util.Map;
 
 @RestController
 @RequestMapping
-public class AuthRoutes {
+public class AuthRoutes extends Routes {
     private final HttpServletResponse httpServletResponse;
     private AuthService authService;
-    private JwtService jwtService;
 
     @Value("${jwt.access.name}")
     private String accessTokenName;
 
     @Autowired
     public AuthRoutes(AuthService authService, JwtService jwtService, HttpServletResponse httpServletResponse) {
+        super(jwtService);
         this.authService = authService;
-        this.jwtService = jwtService;
         this.httpServletResponse = httpServletResponse;
     }
 
@@ -35,7 +34,7 @@ public class AuthRoutes {
         User result = authService.login(loginData.get("email"), loginData.get("password"));
 
         if (result != null) {
-            JwtUser tempUser = new JwtUser(result.getEmail());
+            JwtUser tempUser = new JwtUser(result.getEmail(), result.getId()    );
             Cookie cookie = new Cookie(accessTokenName, jwtService.generateToken(tempUser));
             cookie.setHttpOnly(true);
             cookie.setSecure(true);

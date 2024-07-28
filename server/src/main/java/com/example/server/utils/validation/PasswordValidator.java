@@ -1,5 +1,6 @@
 package com.example.server.utils.validation;
 
+import com.example.server.errors.generic.BadRequest;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
@@ -15,13 +16,15 @@ public class PasswordValidator implements ConstraintValidator<PasswordValid, Str
 
     @Override
     public boolean isValid(String password, ConstraintValidatorContext context) {
-        if (password == null || password.isEmpty()) { return false; }
+        if (password == null || password.isEmpty()) { throw new BadRequest(); }
 
         if (BCRYPT_PATTERN.matcher(password).matches()) { return true; }
 
-        return password.length() >= 8 &&
+        if (password.length() >= 8 &&
                 password.matches(".*\\d.*") &&  // at least one digit
                 password.matches(".*[a-zA-Z].*") && // at least one letter
-                password.matches(".*\\W.*"); // at least one special character
+                password.matches(".*\\W.*")) { return true; } // at least one special character
+
+        throw new BadRequest();
     }
 }

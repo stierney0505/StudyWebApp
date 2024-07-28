@@ -49,15 +49,15 @@ public class UserRoutesTest {
             User returnUser = new User("Bepis", "Jones", "bjones@gmail.com", "testpassword");
             returnUser.setId(1);
 
-            when(service.findUserById(1)).thenReturn(returnUser);
+            when(service.findUserById(1, 1)).thenReturn(returnUser);
 
             // Perform the GET request to /api/users/1 and verify the response
             mockMvc.perform(get(endPoint + "/1")
-                            .cookie(utilFunctions.getJwtCookie("bjones@gmail.com")))
+                            .cookie(utilFunctions.getJwtCookie("bjones@gmail.com", 1)))
                     .andExpect(status().isOk()) // Check for HTTP 200 OK status
                     .andExpect(content().contentType("application/json")) // Optional: Verify content type
-                    .andExpect(jsonPath("$.firstName").value("Bepis")) // Example: Verify response JSON content
-                    .andExpect(jsonPath("$.email").value("bjones@gmail.com"));
+                    .andExpect(jsonPath("$.data.firstName").value("Bepis")) // Example: Verify response JSON content
+                    .andExpect(jsonPath("$.data.email").value("bjones@gmail.com"));
         }
 
         @Test
@@ -70,14 +70,14 @@ public class UserRoutesTest {
             when(service.findAllUsers()).thenReturn(List.of(returnUsers));
 
             // Perform the GET request to /api/users and verify the response
-            mockMvc.perform(get(endPoint).cookie(utilFunctions.getJwtCookie("bjones@gmail.com")))
+            mockMvc.perform(get(endPoint).cookie(utilFunctions.getJwtCookie("bjones@gmail.com", 1)))
                     .andExpect(status().isOk()) // Check for HTTP 200 OK status
                     .andExpect(content().contentType("application/json"))
-                    .andExpect(jsonPath("$.length()").value(returnUsers.length))
-                    .andExpect(jsonPath("$[0].firstName").value("Bepis"))
-                    .andExpect(jsonPath("$[1].firstName").value("Bingus"))
-                    .andExpect(jsonPath("$[0].email").value("bjones@gmail.com"))
-                    .andExpect(jsonPath("$[1].email").value("bjones2@gmail.com"));
+                    .andExpect(jsonPath("$.data.length()").value(returnUsers.length))
+                    .andExpect(jsonPath("$.data[0].firstName").value("Bepis"))
+                    .andExpect(jsonPath("$.data[1].firstName").value("Bingus"))
+                    .andExpect(jsonPath("$.data[0].email").value("bjones@gmail.com"))
+                    .andExpect(jsonPath("$.data[1].email").value("bjones2@gmail.com"));
         }
 
         @Test
@@ -86,20 +86,21 @@ public class UserRoutesTest {
 
             // It doesn't matter that the mocked return user doesn't match the expected values that the service would provide
             // because these tests test for formatting and endpoints.
-            when(service.saveUser(provideUser)).thenReturn(provideUser);
+            when(service.createUser(provideUser)).thenReturn(provideUser);
 
             mockMvc.perform(post(endPoint)
                             .contentType("application/json")
                             .content(Obj.writeValueAsString(provideUser)))
                     .andExpect(status().isOk()) // Check for HTTP 200 OK status
                     .andExpect(content().contentType("application/json"))
-                    .andExpect(jsonPath("$.id").value(0))
-                    .andExpect(jsonPath("$.firstName").value("Large"));
+                    .andExpect(jsonPath("$.data.email").value("largeman@gmail.com"))
+                    .andExpect(jsonPath("$.data.firstName").value("Large"))
+                    .andExpect(jsonPath("$.data.id").value(0));
         }
 
         @Test
         public void deleteUser() throws Exception {
-            mockMvc.perform(delete(endPoint + "/1").cookie(utilFunctions.getJwtCookie("bjones@gmail.com")))
+            mockMvc.perform(delete(endPoint + "/1").cookie(utilFunctions.getJwtCookie("bjones@gmail.com", 1)))
                     .andExpect(status().isOk()); // Check for HTTP 200 OK status
         }
 
@@ -108,16 +109,16 @@ public class UserRoutesTest {
             User provideUser = new User("Large", "Man", "lman@gmail.com", "testpassword12+G");
             // It doesn't matter that the mocked return user doesn't match the expected values that the service would provide
             // because these tests test for formatting and endpoints.
-            when(service.updateUser(provideUser, 1)).thenReturn(provideUser);
+            when(service.updateUser(provideUser, 1, 1)).thenReturn(provideUser);
 
             mockMvc.perform(put(endPoint + "/1")
-                            .cookie(utilFunctions.getJwtCookie("bjones@gmail.com"))
+                            .cookie(utilFunctions.getJwtCookie("bjones@gmail.com", 1))
                             .accept("application/json")
                             .contentType("application/json")
                             .content(Obj.writeValueAsString(provideUser)))
                     .andExpect(status().isOk()) // Check for HTTP 200 OK status
                     .andExpect(content().contentType("application/json"))
-                    .andExpect(jsonPath("$.id").value(0))
-                    .andExpect(jsonPath("$.firstName").value("Large"));
+                    .andExpect(jsonPath("$.data.id").value(0))
+                    .andExpect(jsonPath("$.data.firstName").value("Large"));
         }
 }
