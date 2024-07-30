@@ -2,6 +2,7 @@ package com.example.server.services.route_services;
 
 import com.example.server.dao.UserDAO;
 import com.example.server.entities.User;
+import com.example.server.errors.auth.FailedLoginException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +15,9 @@ public class AuthServiceImpl implements AuthService{
     public AuthServiceImpl(UserDAO userDAO) { this.userDAO = userDAO; }
 
     @Override
-    public User login(String email, String password) { return userDAO.login(email, password); }
+    public User login(String email, String password) {
+        User user = userDAO.login(email, password);
+        if (user == null) { throw new FailedLoginException(); }
+        return user;
+    }
 }

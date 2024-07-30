@@ -20,7 +20,7 @@ public class TestUtilFunctions {
     private JwtService jwtService;
 
     // Utility method to set JWT cookie
-    public Cookie getJwtCookie(String email) throws Exception {
-        return new Cookie(accessTokenName, jwtService.generateToken(new JwtUser(email)));
+    public Cookie getJwtCookie(String email, int id) throws Exception {
+        return new Cookie(accessTokenName, jwtService.generateToken(new JwtUser(email, id)));
     }
 }

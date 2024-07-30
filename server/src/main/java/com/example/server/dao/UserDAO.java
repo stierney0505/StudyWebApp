@@ -13,7 +13,7 @@ public interface UserDAO {
     List<User> findAllUsers();
     User findUserById(int id);
     User updateUser(User user, int id) throws Exception;
-    void deleteUser(int id);
+    boolean deleteUser(int id);
     void createSecurity(User user, Security security);
     User login(String username, String password);
 }

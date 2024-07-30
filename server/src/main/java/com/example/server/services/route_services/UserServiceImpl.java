@@ -3,8 +3,8 @@ package com.example.server.services.route_services;
 import com.example.server.dao.UserDAO;
 import com.example.server.entities.Security;
 import com.example.server.entities.User;
-import com.example.server.services.JwtUser;
-import jakarta.servlet.http.Cookie;
+import com.example.server.errors.user.UserNotAuthorizedException;
+import com.example.server.errors.user.UserNotFoundException;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,6 +17,8 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
+
+//errors in services should be related to authorization, i.e. should the user be allowed to perform an action?
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -54,17 +56,23 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findUserById(int id) {
-        return userDAO.findUserById(id);
+    public User findUserById(int id, int userId) {
+        if(!validateUserId(id, userId)) throw new UserNotAuthorizedException();
+
+        User user = userDAO.findUserById(id);
+        if (user == null) { throw new UserNotFoundException(id); }
+        else { return user; }
     }
 
     @Override
-    public User updateUser(@Valid User user, int id) throws Exception {
+    public User updateUser(@Valid User user, int id, int userId) throws Exception {
+        if(!validateUserId(id, userId)) throw new UserNotAuthorizedException();
         return userDAO.updateUser(user, id);
     }
 
     @Override
-    public void deleteUser(int id) {
+    public void deleteUser(int id, int userId) {
+        if(!validateUserId(id, userId)) throw new UserNotAuthorizedException();
         userDAO.deleteUser(id);
     }
 
@@ -87,4 +95,6 @@ public class UserServiceImpl implements UserService {
     public void initPasswordReset(int id) {
 
     }
+
+    boolean validateUserId(int targetId, int userId) { return targetId == userId; }
 }
