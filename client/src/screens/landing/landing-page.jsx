@@ -5,6 +5,8 @@ import { LTxt, MTxt, STxt } from "../../components/text/text";
 import { Education, Notebook, GroupPresentation } from "@carbon/icons-react";
 import { Helmet } from 'react-helmet';
 
+//temp
+
 const LandingPage = () => {
 
     return (
