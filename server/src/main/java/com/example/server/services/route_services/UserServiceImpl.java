@@ -1,8 +1,8 @@
 package com.example.server.services.route_services;
 
-import com.example.server.dao.UserDAO;
-import com.example.server.entities.Security;
-import com.example.server.entities.User;
+import com.example.server.data.dao.UserDAO;
+import com.example.server.data.entities.Security;
+import com.example.server.data.entities.User;
 import com.example.server.errors.user.UserNotAuthorizedException;
 import com.example.server.errors.user.UserNotFoundException;
 import jakarta.validation.Valid;

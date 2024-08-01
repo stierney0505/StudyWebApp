@@ -1,7 +1,7 @@
-package com.example.server.dao;
+package com.example.server.data.dao;
 
-import com.example.server.entities.Security;
-import com.example.server.entities.User;
+import com.example.server.data.entities.Security;
+import com.example.server.data.entities.User;
 
 import java.util.List;
 

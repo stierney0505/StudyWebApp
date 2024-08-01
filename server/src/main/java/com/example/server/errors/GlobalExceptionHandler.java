@@ -1,6 +1,7 @@
 package com.example.server.errors;
 
 
+import com.example.server.errors.user.UserNotAuthenticatedException;
 import com.example.server.utils.responses.Response;
 import com.example.server.utils.responses.ResponseGenerator;
 import org.springframework.http.ResponseEntity;
@@ -14,4 +15,10 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Response<CustomError>> handleCustomError(CustomError e) {
         return ResponseGenerator.CreateErrorResponse(e);
     }
+
+    @ExceptionHandler(UserNotAuthenticatedException.class)
+    public ResponseEntity<Response<CustomError>> handleUserNotAuthenticatedException(UserNotAuthenticatedException e) {
+        return ResponseGenerator.CreateErrorResponse(e);
+    }
+
 }
