@@ -35,7 +35,7 @@ public class JwtServiceImpl implements JwtService {
 
     public String generateToken(JwtUser user) {
         Map<String, Object> claims = new HashMap<>();
-        claims.put(user.test, "test");
+        claims.put("id", user.getId());
         return Jwts.builder().setClaims(claims).setSubject(user.getEmail()).setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + accessExpiry))
                 .signWith(getSignInKey(), SignatureAlgorithm.HS512).compact();
@@ -50,8 +50,15 @@ public class JwtServiceImpl implements JwtService {
         return getClaimFromToken(token, Claims::getExpiration);
     }
 
-    public String getUserFromToken(String token) {
+    public String getEmailFromToken(String token) {
         return getClaimFromToken(token, Claims::getSubject);
+    }
+
+    @Override
+    public <T> T getClaimFromToken(String token, String fieldName, Class<T> type) {
+        Claims claims = getAllClaimsFromToken(token);
+        T val = claims.get(fieldName, type);
+        return val;
     }
 
     private Boolean isExpired(String token) {

@@ -5,7 +5,6 @@ import Footer from './components/footer/footer.jsx';
 import './index.css';
 import './App.css';
 
-
 //headers
 // import SessionHeader from './components/header/non-session-header/header.jsx';
 import NoSessionHeader from './components/header/non-session-header/non-session-header.jsx';

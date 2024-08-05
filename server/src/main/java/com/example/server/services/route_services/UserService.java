@@ -2,6 +2,7 @@ package com.example.server.services.route_services;
 
 import com.example.server.entities.Security;
 import com.example.server.entities.User;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -9,9 +10,10 @@ import java.util.List;
 public interface UserService {
     User saveUser(User user);
     List<User> findAllUsers();
-    User findUserById(int id);
-    User updateUser(User user, int id) throws Exception;
-    void deleteUser(int id);
+    User findUserById(int id, int userId);
+    User updateUser(User user, int id, int userId) throws Exception;
+    void deleteUser(int id, int userId);
     Security demoCreateSecurity(int id);
     public void initPasswordReset(int id);
+    public User createUser(@Valid User user);
 }

@@ -1,6 +1,7 @@
 package com.example.server.security;
 
 import com.example.server.services.JwtService;
+import com.example.server.utils.RouteWhiteList;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
@@ -10,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
@@ -32,13 +32,17 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     @Autowired
     private HandlerExceptionResolver handlerExceptionResolver;
 
+    @Autowired
+    private RouteWhiteList routeWhiteList;
+
     @Value("${jwt.access.name}")
     private String accessTokenName;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         RequestMatcher ignoredPath = new AntPathRequestMatcher("/api/auth");
-        if (ignoredPath.matches(request) && request.getMethod().equals("POST")) {
+
+        if (routeWhiteList.inWhitelist(request.getRequestURI()) && request.getMethod().equals("POST")) {
             filterChain.doFilter(request, response);
             return;
         }
@@ -49,7 +53,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             if (cookie.getName().equals(accessTokenName)) {
                 try {
                     if (jwtService.validate(cookie.getValue())) {
-                        String user = jwtService.getUserFromToken(cookie.getValue());
+                        String user = jwtService.getEmailFromToken(cookie.getValue());
 
                         UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
                                 user, null, new ArrayList<>());
@@ -61,8 +65,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                         return;
                     }
                 } catch (Exception e) {
-                    handlerExceptionResolver.resolveException(request, response, null, e);
-                    return;
+                    throw e;
                 }
             }
         }

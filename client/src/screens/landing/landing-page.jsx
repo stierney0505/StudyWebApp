@@ -6,6 +6,8 @@ import { Education, Notebook, GroupPresentation } from "@carbon/icons-react";
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 
+//temp
+
 const LandingPage = () => {
 
     const navigate = useNavigate();
