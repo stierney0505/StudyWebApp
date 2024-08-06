@@ -1,6 +1,6 @@
 import { expect, test } from 'vitest';
 import { render, fireEvent, screen } from '@testing-library/react';
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import InputButton from './button';
 
 const Home = () => <div>Welcome home!</div>
@@ -10,9 +10,10 @@ const LocationDisplay = () => {
   const location = useLocation();
   return <div data-testid='location-display'>{location.pathname}</div>
 }
+const NavigateContainer = () => {
+  const navigate = useNavigate();
 
-test('Button with URL should navigate elsewhere', () => {
-  render(
+  return (
     <div>
       <Routes>
         <Route path='/' element={<Home />} />
@@ -20,8 +21,14 @@ test('Button with URL should navigate elsewhere', () => {
         <Route path='*' element={<NoMatch />} />
       </Routes>
       <LocationDisplay />
-      <InputButton text={'Press this'} URL={'dashboard'} />
-    </div>,
+      <InputButton text={'Press this'} onClick={() => navigate('/dashboard')}/>
+    </div>
+  );
+}
+
+test('Button with navigate in onClick should navigate elsewhere', () => {
+  render(
+    <NavigateContainer />,
     { wrapper: BrowserRouter },
   );
   
@@ -35,7 +42,7 @@ test('Button with URL should navigate elsewhere', () => {
   expect(screen.getByTestId('location-display')).toHaveTextContent('/dashboard');
 });
 
-test('Button with no URL should not navigate elsewhere', () => {
+test('Default Button without onClick should do nothing and have type "button"', () => {
   render(
     <div>
       <Routes>
@@ -57,6 +64,8 @@ test('Button with no URL should not navigate elsewhere', () => {
 
   expect(screen.queryByText('Welcome home!')).toBeDefined();
   expect(screen.getByTestId('location-display')).toHaveTextContent('/');
+
+  expect(button).toHaveAttribute('type', 'button');
 });
 
 test('Button properties should propagate to child button element', () => {
