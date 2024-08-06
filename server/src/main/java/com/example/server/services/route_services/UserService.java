@@ -1,7 +1,7 @@
 package com.example.server.services.route_services;
 
-import com.example.server.entities.Security;
-import com.example.server.entities.User;
+import com.example.server.data.entities.Security;
+import com.example.server.data.entities.User;
 import jakarta.validation.Valid;
 
 import java.util.List;

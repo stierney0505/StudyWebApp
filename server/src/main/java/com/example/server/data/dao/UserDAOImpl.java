@@ -1,7 +1,7 @@
-package com.example.server.dao;
+package com.example.server.data.dao;
 
-import com.example.server.entities.Security;
-import com.example.server.entities.User;
+import com.example.server.data.entities.Security;
+import com.example.server.data.entities.User;
 import com.example.server.errors.user.UserExistsException;
 import com.example.server.errors.user.UserNotFoundException;
 import com.example.server.utils.validation.PasswordValid;
@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 
 import java.util.List;
 

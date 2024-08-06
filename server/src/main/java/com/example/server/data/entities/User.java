@@ -1,12 +1,10 @@
-package com.example.server.entities;
+package com.example.server.data.entities;
 
 import com.example.server.utils.validation.PasswordValid;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Table(name="users")
