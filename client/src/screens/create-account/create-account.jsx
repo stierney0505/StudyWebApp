@@ -22,7 +22,7 @@ const CreateForm = () => {
 
   function createAccount(event) {
     event.preventDefault();
-    axios.post(`${import.meta.env.VITE_SERVER_URI}/api/user`, form)
+    axios.post(`${import.meta.env.VITE_SERVER_URI}/api/users`, form)
       .then(function (response) {
         if (response.data.success) {
           navigate('/dashboard')
