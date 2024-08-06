@@ -27,4 +27,6 @@ public class PasswordValidator implements ConstraintValidator<PasswordValid, Str
 
         throw new BadRequest();
     }
+
+
 }

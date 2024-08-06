@@ -1,7 +1,12 @@
 package com.example.server.security;
 
+import com.example.server.errors.CustomError;
+import com.example.server.errors.user.UserNotAuthenticatedException;
 import com.example.server.services.JwtService;
 import com.example.server.utils.RouteWhiteList;
+import com.example.server.utils.responses.Response;
+import com.example.server.utils.responses.ResponseGenerator;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
@@ -11,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
@@ -39,7 +45,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     private String accessTokenName;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws IOException, ServletException {
         RequestMatcher ignoredPath = new AntPathRequestMatcher("/api/auth");
 
         if (routeWhiteList.inWhitelist(request.getRequestURI()) && request.getMethod().equals("POST")) {
@@ -48,10 +55,11 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         }
 
         Cookie[] cookies = request.getCookies();
+        if (cookies == null) { handleException(request, response, new UserNotAuthenticatedException()); }
 
-        for (Cookie cookie : cookies) {
-            if (cookie.getName().equals(accessTokenName)) {
-                try {
+        try {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals(accessTokenName)) {
                     if (jwtService.validate(cookie.getValue())) {
                         String user = jwtService.getEmailFromToken(cookie.getValue());
 
@@ -64,12 +72,15 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                         filterChain.doFilter(request, response);
                         return;
                     }
-                } catch (Exception e) {
-                    throw e;
                 }
             }
+        } catch (Exception e) {
+            handlerExceptionResolver.resolveException(request, response, null, e);
         }
-        response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
+    }
+
+    private void handleException(HttpServletRequest request, HttpServletResponse response, Exception e) throws IOException, ServletException {
+        handlerExceptionResolver.resolveException(request, response, null, e);
     }
 
     @Bean
@@ -79,4 +90,3 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         return registration;
     }
 }
-
