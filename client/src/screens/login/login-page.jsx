@@ -5,10 +5,12 @@ import './login-page.css';
 import Link from "../../components/links/link";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
 
-
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -16,8 +18,22 @@ const LoginPage = () => {
     } = useForm();
 
     const onSubmit = (data) => {
-        
-        console.log(data.username);
+
+        let requestData = {
+            "username": data.username,
+            "password": data.password
+        };
+
+        //make axios request
+        axios.post("http://localhost:8080/api/auth", requestData)
+        .then (function (response) {
+            if (response.data.success){
+                navigate('/dashboard')
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 
     }
 
