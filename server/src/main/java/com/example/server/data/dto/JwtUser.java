@@ -1,4 +1,4 @@
-package com.example.server.services;
+package com.example.server.data.dto;
 
 public class JwtUser {
 

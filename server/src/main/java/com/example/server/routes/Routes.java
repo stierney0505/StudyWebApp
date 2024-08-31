@@ -2,10 +2,9 @@ package com.example.server.routes;
 
 
 import com.example.server.services.JwtService;
-import com.example.server.services.JwtUser;
+import com.example.server.data.dto.JwtUser;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public abstract class Routes {
     protected static final String JWT_TOKEN_NAME = "jwtaccesstokentest";

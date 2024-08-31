@@ -1,12 +1,8 @@
-package com.example.server.security;
+package com.example.server.security.filters;
 
-import com.example.server.errors.CustomError;
 import com.example.server.errors.user.UserNotAuthenticatedException;
 import com.example.server.services.JwtService;
 import com.example.server.utils.RouteWhiteList;
-import com.example.server.utils.responses.Response;
-import com.example.server.utils.responses.ResponseGenerator;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
@@ -16,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;

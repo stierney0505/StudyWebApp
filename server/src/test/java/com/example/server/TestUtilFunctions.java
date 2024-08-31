@@ -1,15 +1,11 @@
 package com.example.server;
 
 import com.example.server.services.JwtService;
-import com.example.server.services.JwtUser;
+import com.example.server.data.dto.JwtUser;
 import jakarta.servlet.http.Cookie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 @Component
 public class TestUtilFunctions {

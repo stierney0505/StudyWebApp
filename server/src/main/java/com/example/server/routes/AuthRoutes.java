@@ -3,7 +3,7 @@ package com.example.server.routes;
 import com.example.server.data.entities.User;
 import com.example.server.errors.auth.FailedLoginException;
 import com.example.server.services.JwtService;
-import com.example.server.services.JwtUser;
+import com.example.server.data.dto.JwtUser;
 import com.example.server.services.route_services.AuthService;
 import com.example.server.utils.responses.Response;
 import com.example.server.utils.responses.ResponseGenerator;
