@@ -6,8 +6,8 @@ import './index.css';
 import './App.css';
 
 //headers
-// import SessionHeader from './components/header/non-session-header/header.jsx';
-import NoSessionHeader from './components/header/non-session-header/non-session-header.jsx';
+// import SessionHeader from './components/header/session-header/session-header.jsx';
+import NonSessionHeader from './components/header/non-session-header/non-session-header.jsx';
 
 // Pages
 import LandingPage from './screens/landing/landing-page.jsx';
@@ -47,11 +47,11 @@ const App = () => {
 
 
     <Routes>
-      <Route 
+      <Route
           path="/"
           element={
             <>
-              <NoSessionHeader darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>
+              <NonSessionHeader darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>
               <Container>
                 <div className='content'>
                   <LandingPage />
@@ -59,7 +59,6 @@ const App = () => {
                 <Footer /><br />
               </Container>
             </>
-            
           }>
         </Route>
       <Route
@@ -74,7 +73,7 @@ const App = () => {
         path="/login"
         element={
           <>
-            <NoSessionHeader darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>
+            <NonSessionHeader darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>
             <Container>
               <div className='content'>
                 <LoginPage />
@@ -105,7 +104,7 @@ const App = () => {
         element={
           <>
             <ChangePassword />
-          </>  
+          </>
         }
       />
       <Route
@@ -129,7 +128,7 @@ const App = () => {
           path="*"
           element={
             <>
-              <NoSessionHeader darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>
+              <NonSessionHeader darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>
               <Container>
                 <div className='content'>
                   <NotFoundPage />
