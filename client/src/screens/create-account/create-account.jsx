@@ -11,7 +11,6 @@ import styles from './create-account.module.css';
 import OutlinedTextField from '../../components/outlined-text-field/outlined-text-field';
 import InputButton from '../../components/button/button';
 import Link from '../../components/links/link';
-import SessionHeader from '../../components/header/session-header/session-header';
 
 const CreateForm = () => {
   const id = useId();
@@ -166,7 +165,6 @@ const CreateAccount = () => (
     <Helmet>
       <title>Create Account</title>
     </Helmet>
-    <SessionHeader />
     <div className={styles['screen-container']}>
       <div className={styles['form-container']}>
         <CreateForm />
