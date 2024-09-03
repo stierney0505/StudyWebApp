@@ -10,8 +10,19 @@
   column-gap: 20px;
 }
 
-.form-line {
+/* .form-line {
   margin-bottom: 20px;
+} */
+
+.text-field {
+  margin-bottom: 20px;
+}
+
+.error-text {
+    font-size: 9pt;
+    color: var(--error);
+    margin-top: 8px;
+    margin-left: 11px; /* to match the text field's padding + border width */
 }
 
 .login-link-line {
