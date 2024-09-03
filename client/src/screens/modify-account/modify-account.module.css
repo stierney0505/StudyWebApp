@@ -2,6 +2,7 @@
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
+  color: var(--on-background);
 }
 
 .name-group {
@@ -14,14 +15,23 @@
   margin-bottom: 20px;
 }
 
+.error-text {
+  font-size: 9pt;
+  color: var(--error);
+  margin-top: 8px;
+  margin-left: 11px;
+  /* to match the text field's padding + border width */
+}
+
 .reset-line {
   display: flex;
   align-items: center;
-  margin-left: 15px;
+  margin-left: 10px;
 }
 
 .reset-text {
   margin-right: 1em;
+  color: var(--on-background);
 }
 
 .button-line {
@@ -33,17 +43,18 @@
 .form-container {
   width: fit-content;
   height: fit-content;
-  border: 3px solid black;
   border-radius: 20px;
-  padding: 20px;
-  background-color: white;
+  padding: 3% 5%;
+  background-color: var(--background);
 }
 
 .screen-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   height: fit-content;
-  background-image: linear-gradient(to bottom right, #5F66E1, #5B2B99);
+  margin-bottom: 3%;
+  padding: 5% 10%;
+  border-radius: 30px;
+  background-color: var(--surface);
 }
