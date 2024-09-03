@@ -48,24 +48,30 @@ const App = () => {
 
     <Routes>
       <Route
-          path="/"
-          element={
-            <>
-              <NonSessionHeader darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>
-              <Container>
-                <div className='content'>
-                  <LandingPage />
-                </div>
-                <Footer /><br />
-              </Container>
-            </>
-          }>
-        </Route>
+        path="/"
+        element={
+          <>
+            <NonSessionHeader darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+            <Container>
+              <div className='content'>
+                <LandingPage />
+              </div>
+              <Footer /><br />
+            </Container>
+          </>
+        }>
+      </Route>
       <Route
         path="/create-account"
         element={
           <>
-            <CreateAccount />
+            <NonSessionHeader darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+            <Container>
+              <div className='content'>
+                <CreateAccount />
+              </div>
+            </Container>
+            <Footer />
           </>
         }
       />
@@ -73,7 +79,7 @@ const App = () => {
         path="/login"
         element={
           <>
-            <NonSessionHeader darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>
+            <NonSessionHeader darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
             <Container>
               <div className='content'>
                 <LoginPage />
@@ -123,21 +129,21 @@ const App = () => {
           </>
         }
       />
-          {/* Catch All Page - 404 */}
-        <Route
-          path="*"
-          element={
-            <>
-              <NonSessionHeader darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>
-              <Container>
-                <div className='content'>
-                  <NotFoundPage />
-                </div>
-                <Footer />
-              </Container>
-            </>
-          }>
-        </Route>
+      {/* Catch All Page - 404 */}
+      <Route
+        path="*"
+        element={
+          <>
+            <NonSessionHeader darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+            <Container>
+              <div className='content'>
+                <NotFoundPage />
+              </div>
+              <Footer />
+            </Container>
+          </>
+        }>
+      </Route>
     </Routes>
   );
 }
