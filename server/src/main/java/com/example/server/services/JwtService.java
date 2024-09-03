@@ -1,5 +1,6 @@
 package com.example.server.services;
 
+import com.example.server.data.dto.JwtUser;
 import io.jsonwebtoken.Claims;
 
 import java.util.Date;

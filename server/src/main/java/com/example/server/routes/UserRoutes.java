@@ -4,7 +4,7 @@ import com.example.server.data.dto.UserDTO;
 import com.example.server.data.entities.Security;
 import com.example.server.data.entities.User;
 import com.example.server.services.JwtService;
-import com.example.server.services.JwtUser;
+import com.example.server.data.dto.JwtUser;
 import com.example.server.services.route_services.UserService;
 import com.example.server.utils.responses.Response;
 import com.example.server.utils.responses.ResponseGenerator;
@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
