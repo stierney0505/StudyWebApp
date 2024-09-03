@@ -6,7 +6,7 @@ import './index.css';
 import './App.css';
 
 //headers
-// import SessionHeader from './components/header/session-header/session-header.jsx';
+import SessionHeader from './components/header/session-header/session-header.jsx';
 import NonSessionHeader from './components/header/non-session-header/non-session-header.jsx';
 
 // Pages
@@ -70,8 +70,8 @@ const App = () => {
               <div className='content'>
                 <CreateAccount />
               </div>
+                <Footer />
             </Container>
-            <Footer />
           </>
         }
       />
@@ -125,7 +125,13 @@ const App = () => {
         path="/modify-account/"
         element={
           <>
-            <ModifyAccount />
+            <SessionHeader darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+            <Container>
+              <div className='content'>
+                <ModifyAccount />
+              </div>
+              <Footer />
+            </Container>
           </>
         }
       />
