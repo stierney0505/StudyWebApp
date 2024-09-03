@@ -19,6 +19,7 @@
 }
 
 .container-link:hover {
+    cursor: pointer;
     background-size: 0 2px, 100% 2px;
 }
 
