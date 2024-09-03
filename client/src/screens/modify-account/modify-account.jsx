@@ -1,69 +1,95 @@
-import { useId, useState } from 'react';
+import { useId } from 'react';
+import { useForm } from 'react-hook-form';
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 import styles from './modify-account.module.css';
 
-import TextField from '../../components/text-field/text-field';
+import OutlinedTextField from '../../components/outlined-text-field/outlined-text-field';
 import InputButton from '../../components/button/button';
 
 const ModifyForm = () => {
   const id = useId();
   const navigate = useNavigate();
-  const [form, setForm] = useState({
-    fname: '',
-    lname: '',
-    email: '',
-  });
 
-  function modifyAccount(event) {
-    event.preventDefault();
-    console.log(form);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setValue,
+  } = useForm();
+
+  console.log(errors);
+
+  axios.get(`${import.meta.env.VITE_SERVER_URI}/api/users/tokenUser`, { withCredentials: true })
+    .then(function (response) {
+      setValue('firstName', response.data.data.firstName);
+      setValue('lastName', response.data.data.lastName);
+      setValue('email', response.data.data.email);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+  function onSubmit(data) {
+    console.log(data);
   }
 
   return (
     <>
-      <Helmet>
-          <title>Modify Account</title>
-      </Helmet>
-      <h1 className={ [styles.heading, styles['poppins-bold']].join(' ') }>Modify Account Details</h1>
-      <form method='post' onSubmit={modifyAccount} >
-        <div className={ [styles['name-group'], styles['form-line']].join(' ') }>
-          <TextField
-            fieldId={id + '-fname'}
-            text={'First Name'}
-            name={id + '-fname'}
-            type={'text'}
-            value={form.fname}
-            onChange={e => setForm({
-              ...form,
-              fname: e.target.value
-            })}
-          />
-          <TextField
-            fieldId={id + '-lname'}
-            text={'Last Name'}
-            name={id + '-lname'}
-            type={'text'}
-            value={form.lname}
-            onChange={e => setForm({
-              ...form,
-              lname: e.target.value
-            })}
-          />
+      <h1 className={[styles.heading, styles['poppins-bold']].join(' ')}>Modify Account Details</h1>
+      <form onSubmit={handleSubmit(onSubmit)} >
+        <div className={[styles['name-group'], styles['form-line']].join(' ')}>
+          <div className={styles['text-field']}>
+            <OutlinedTextField
+              fieldId={id + '-firstName'}
+              name="firstName"
+              text="First Name"
+              type="text"
+              register={register('firstName', {
+                required: 'First Name is required',
+                minLength: { value: 3, message: 'First Name must be at least 3 characters long', },
+                maxLength: { value: 22, message: 'First Name cannot exceed 22 characters', },
+              })}
+              isError={errors.firstName}
+            />
+            {(errors.firstName) && <p className={styles['error-text']}>{errors.firstName.message}</p>}
+          </div>
+          <div className={styles['text-field']}>
+            <OutlinedTextField
+              fieldId={id + '-lastName'}
+              name="lastName"
+              text="Last Name"
+              type="text"
+              register={register('lastName', {
+                required: 'Last Name is required',
+                minLength: { value: 3, message: 'Last Name must be at least 3 characters long', },
+                maxLength: { value: 22, message: 'Last Name cannot exceed 22 characters', },
+              })}
+              isError={errors.lastName}
+            />
+            {(errors.lastName) && <p className={styles['error-text']}>{errors.lastName.message}</p>}
+          </div>
         </div>
         <div className={styles['form-line']}>
-          <TextField
-            fieldId={id + '-email'}
-            text={'Email'}
-            name={id + '-email'}
-            type={'email'}
-            value={form.email}
-            onChange={e => setForm({
-              ...form,
-              email: e.target.value
-            })}
-          />
+          <div className={styles['text-field']}>
+            <OutlinedTextField
+              fieldId={id + '-email'}
+              name="email"
+              text="Email"
+              type='email'
+              register={register('email', {
+                required: 'Email is required',
+                pattern: {
+                  value: /^\S+@\S+\.\S+$/,
+                  message: 'Entered value does not match email format',
+                },
+              })}
+              isError={errors.email}
+            />
+            {(errors.email) && <p className={styles['error-text']}>{errors.email.message}</p>}
+          </div>
         </div>
         <div className={styles['reset-line']}>
           <p className={styles['reset-text']}>Change (Reset) Password: </p>
@@ -79,11 +105,16 @@ const ModifyForm = () => {
 };
 
 const ModifyAccount = () => (
-  <div className={styles['screen-container']}>
-    <div className={styles['form-container']}>
-      <ModifyForm />
+  <>
+    <Helmet>
+      <title>Modify Account</title>
+    </Helmet>
+    <div className={styles['screen-container']}>
+      <div className={styles['form-container']}>
+        <ModifyForm />
+      </div>
     </div>
-  </div>
+  </>
 );
 
 export default ModifyAccount;
