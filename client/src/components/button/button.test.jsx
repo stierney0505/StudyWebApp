@@ -21,7 +21,7 @@ const NavigateContainer = () => {
         <Route path='*' element={<NoMatch />} />
       </Routes>
       <LocationDisplay />
-      <InputButton text={'Press this'} onClick={() => navigate('/dashboard')}/>
+      <InputButton text={'Press this'} onClick={() => navigate('/dashboard')} />
     </div>
   );
 }
@@ -31,7 +31,7 @@ test('Button with navigate in onClick should navigate elsewhere', () => {
     <NavigateContainer />,
     { wrapper: BrowserRouter },
   );
-  
+
   expect(screen.queryByText('Welcome home!')).toBeDefined();
   expect(screen.getByTestId('location-display')).toHaveTextContent('/');
 
@@ -55,7 +55,7 @@ test('Default Button without onClick should do nothing and have type "button"', 
     </div>,
     { wrapper: BrowserRouter },
   );
-  
+
   expect(screen.queryByText('Welcome home!')).toBeDefined();
   expect(screen.getByTestId('location-display')).toHaveTextContent('/');
 
@@ -70,11 +70,22 @@ test('Default Button without onClick should do nothing and have type "button"', 
 
 test('Button properties should propagate to child button element', () => {
   render(
-    <div>
-      <InputButton text={'Press this'} name='test'/>
-    </div>,
+    <InputButton text={'Press this'} name='test' />,
     { wrapper: BrowserRouter },
   );
 
   expect(screen.getByRole('button')).toHaveAttribute('name', 'test');
+});
+
+test('Button variants should have their variant-specific class', () => {
+  render(
+    <>
+      <InputButton text="Small" size="small" />
+      <InputButton text="Medium" size="medium" />
+    </>,
+    { wrapper: BrowserRouter }
+  );
+
+  expect(screen.getByRole('button', { name: 'Small' })).toHaveClass(/small/);
+  expect(screen.getByRole('button', { name: 'Medium' })).toHaveClass(/medium/);
 });
