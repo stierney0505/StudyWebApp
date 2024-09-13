@@ -22,11 +22,8 @@ const CreateForm = () => {
     formState: { errors },
   } = useForm();
 
-  console.log(errors);
-
   function onSubmit(data) {
     const { confirmPassword: _, ...submissionData } = data;
-    console.log(submissionData);
 
     axios.post(
       `${import.meta.env.VITE_SERVER_URI}/api/users`,
@@ -34,7 +31,7 @@ const CreateForm = () => {
       { withCredentials: true }
     )
       .then(function (response) {
-        if (response.data.success) {
+        if (response.data) {
           navigate('/dashboard')
         }
       })
@@ -46,7 +43,7 @@ const CreateForm = () => {
   return (
     <>
       <h1 className={[styles.heading, styles['poppins-bold']].join(' ')}>Create an Account</h1>
-      <form onSubmit={handleSubmit(onSubmit)} >
+      <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <div className={[styles['name-group'], styles['form-line']].join(' ')}>
           <div className={styles['text-field']}>
             <OutlinedTextField
@@ -61,7 +58,7 @@ const CreateForm = () => {
               })}
               isError={errors.firstName}
             />
-            {(errors.firstName) && <p className={styles['error-text']}>{errors.firstName.message}</p>}
+            {(errors.firstName) && <p role="alert" className={styles['error-text']}>{errors.firstName.message}</p>}
           </div>
           <div className={styles['text-field']}>
             <OutlinedTextField
@@ -76,7 +73,7 @@ const CreateForm = () => {
               })}
               isError={errors.lastName}
             />
-            {(errors.lastName) && <p className={styles['error-text']}>{errors.lastName.message}</p>}
+            {(errors.lastName) && <p role="alert" className={styles['error-text']}>{errors.lastName.message}</p>}
           </div>
         </div>
         <div className={styles['form-line']}>
@@ -95,7 +92,7 @@ const CreateForm = () => {
               })}
               isError={errors.email}
             />
-            {(errors.email) && <p className={styles['error-text']}>{errors.email.message}</p>}
+            {(errors.email) && <p role="alert" className={styles['error-text']}>{errors.email.message}</p>}
           </div>
         </div>
         <div className={styles['form-line']}>
@@ -125,7 +122,7 @@ const CreateForm = () => {
               })}
               isError={errors.password}
             />
-            {(errors.password) && <p className={styles['error-text']}>{errors.password.message}</p>}
+            {(errors.password) && <p role="alert" className={styles['error-text']}>{errors.password.message}</p>}
           </div>
         </div>
         <div className={styles['form-line']}>
@@ -145,7 +142,7 @@ const CreateForm = () => {
               })}
               isError={errors.confirmPassword}
             />
-            {(errors.confirmPassword) && <p className={styles['error-text']}>{errors.confirmPassword.message}</p>}
+            {(errors.confirmPassword) && <p role="alert" className={styles['error-text']}>{errors.confirmPassword.message}</p>}
           </div>
         </div>
         <div className={styles['login-link-line']}>
