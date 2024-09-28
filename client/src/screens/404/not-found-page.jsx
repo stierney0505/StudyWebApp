@@ -1,4 +1,5 @@
 /* eslint-disable react/no-unknown-property */
+import { useNavigate } from 'react-router-dom';
 import InputButton from '../../components/button/button';
 import { LTxt, MTxt } from '../../components/text/text';
 import styles from './not-found.module.css'
@@ -6,6 +7,8 @@ import { Helmet } from 'react-helmet';
 
 
 const NotFoundPage = () => {
+
+    const navigate = useNavigate();
 
     return (
         <>
@@ -20,7 +23,7 @@ const NotFoundPage = () => {
                     <InputButton 
                         text={"Back To Last Page"}
                         id={styles['nav-last-page']}
-                        URL="/"
+                        onClick={() => navigate("/")}
                     />
                 </div>
                 <div className={styles['NF-Graphic']}>

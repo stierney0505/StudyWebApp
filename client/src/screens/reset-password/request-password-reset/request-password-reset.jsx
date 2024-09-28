@@ -2,8 +2,8 @@ import { useId, useState } from 'react';
 
 import styles from './request-password-reset.module.css';
 
-import TextField from '../../../components/text-field/text-field';
-import Button from '../../../components/button/button';
+import OutlinedTextField from '../../../components/outlined-text-field/outlined-text-field';
+import InputButton from '../../../components/button/button';
 import { useNavigate } from 'react-router-dom';
 
 const RequestResetForm = () => {
@@ -23,7 +23,7 @@ const RequestResetForm = () => {
       <h1 className={ [styles.heading, styles['poppins-bold']].join(' ') }>Request Password Reset</h1>
       <form method='post' onSubmit={requestReset} >
         <div className={styles['form-line']}>
-          <TextField
+          <OutlinedTextField
             fieldId={id + '-email'}
             text={'Email'}
             name={'email'}
@@ -33,8 +33,8 @@ const RequestResetForm = () => {
           />
         </div>
         <div className={styles['button-line']}>
-          <Button type={'button'} text={'Back to Login'} URL={'/login'} />
-          <Button type={'submit'} text={'Submit'} />
+          <InputButton type={'button'} text={'Back to Login'} onClick={() => navigate('/login')} />
+          <InputButton type={'submit'} text={'Submit'} />
         </div>
       </form>
     </>

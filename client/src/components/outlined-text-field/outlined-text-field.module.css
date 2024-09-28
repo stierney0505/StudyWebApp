@@ -5,25 +5,32 @@
 
 .input-group {
     position: relative;
-    margin: 0 !important;
 }
 
 .input-group label {
     position: absolute;
     top: 50%;
-    left: 10px;
+    left: 5px;
     transform: translateY(-50%);
-    font-size: 16px;
+    font-size: 12pt;
     color: var(--on-background);
     padding: 0 5px;
     pointer-events: none;
+    transition:
+        top 0.5s ease,
+        left 0.5s ease,
+        font-size 0.5s ease,
+        background 0.5s step-end;
+}
 
+.error label {
+    color: var(--error);
 }
 
 .input-group input {
     width: 100%;
-    height: 40px;
-    font-size: 16px;
+    height: 3.25em;
+    font-size: 12pt;
     color: var(--on-background);
     padding: 3px 10px;
     background: transparent;
@@ -32,21 +39,27 @@
     border-radius: 15px;
 }
 
+.error input {
+    border-color: var(--error);
+}
+
 .input-group input::placeholder {
     color: var(--placeholder);
 }
 
 .input-group input:focus~label,
-.input-group input:valid~label,
-.input-group input:not([value=""])~label {
+.input-group input:not(:placeholder-shown)~label {
     top: 0;
-    font-size: 12px;
-    background: var(--surface);
-    transition: 0.5s ease;
+    left: 10px;
+    font-size: 9pt;
+    background: var(--background);
+    transition:
+        top 0.5s ease,
+        left 0.5s ease,
+        font-size 0.5s ease;
 }
 
-.input-group input:focus,
-.input-grtoup input:valid {
+.input-group input:focus {
     border: 1.5px solid var(--primary);
-    transition: 0.5s ease;
+    outline: 2px solid var(--primary);
 }

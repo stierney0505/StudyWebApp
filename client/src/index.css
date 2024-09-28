@@ -14,14 +14,16 @@
   --on-secondary: rgb(50,50,50);
   --primary-hover: #46159b;
   --secondary-hover: #efbe37;
-  --on-primary-hover: #dfdfdf; 
+  --on-primary-hover: #dfdfdf;
   --on-secondary-hover: rgb(41, 41, 41);
 
   /* MISC */
   --placeholder: rgb(100,100,100);
   --dark: rgb(50,50,50);
   --error: red;
-  
+  --error-background: rgb(255, 215, 215);
+  --success: rgb(53, 170, 53);
+  --success-background: rgb(215, 247, 215);
 }
 
 [data-theme="true"] {
@@ -42,4 +44,7 @@
   --placeholder: rgb(200,200,200);
   --dark: rgb(50,50,50);
   --error: rgb(250, 63, 63);
+  --error-background: rgb(53, 0, 0);
+  --success: green;
+  --success-background: rgb(0, 53, 0);
 }

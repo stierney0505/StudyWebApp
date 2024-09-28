@@ -37,67 +37,16 @@ body {
     color: var(--on-surface);
 }
 
+.text-field {
+    margin-bottom: 20px;
+}
+
 .login-fields {
     width: 300px;
 }
 
-#lg-username {
-    width: 100%;
-    height: 50px;
-    margin-bottom: 20px; 
-}
-
-#lg-username-error {
-    width: 100%;
-    height: 50px;
-    margin-bottom: 20px; 
-    border-color: var(--error);
-}
-
-#lg_username_id label {
-    transform: translateY(-90%);
-}
-
-#lg_username_id_error label {
-    color: var(--error);
-    transform: translateY(-90%);
-}
-
-#lg_password_id_error label {
-    color: var(--error);
-}
-
-#lg_username_id input:focus~label,
-#lg_username_id input:valid~label {
-    bottom: 10 !important;
-    font-size: 12px;
-    background: var(--background);
-    transition: 0.5s ease;
-    transform: translateY(-50%);
-}
-
-#lg_username_id_error input:focus~label,
-#lg_username_id_error input:valid~label {
-    bottom: 10 !important;
-    font-size: 12px;
-    background: var(--background);
-    transition: 0.5s ease;
-    transform: translateY(-50%);
-}
-
-#lg-password {
-    width: 100%;
-    height: 50px;
-}
-
-#lg-password-error {
-    width: 100%;
-    height: 50px;
-    border-color: var(--error);
-}
-
 #submit-button {
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 #or-header {
@@ -117,11 +66,11 @@ body {
     font-size: 14px;
 }
 
-#error-text {
-    font-size: 15px;
+.error-text {
+    font-size: 9pt;
     color: var(--error);
-    text-align: center;
-    margin-top: 15px;
+    margin-top: 8px;
+    margin-left: 11px; /* to match the text field's padding + border width */
 }
 
 @media (max-width: 730px) {

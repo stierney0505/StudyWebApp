@@ -1,24 +1,22 @@
-import './button.css';
-import { useNavigate } from 'react-router-dom';
+import styles from './button.module.css';
 
-const InputButton = ({text, URL, ...props}) => {
-
-    const navigate = useNavigate();
-
-    const navigateRoute = (route) => {
-        if (route)
-            navigate(route)
-    }
-
-    return (
-        <button
-            className='button'
-            onClick={() => navigateRoute(URL)}
-            {...props}
-        >
-            {text}
-        </button>
-    );
+const InputButton = ({
+  type = 'button',
+  text,
+  size = 'medium',
+  onClick,
+  ...props
+}) => {
+  return (
+    <button
+      className={`${styles['button']} ${styles[size]}`}
+      type={type}
+      onClick={onClick}
+      {...props}
+    >
+      {text}
+    </button>
+  );
 };
 
 export default InputButton;

@@ -4,10 +4,13 @@ import InputButton from "../../components/button/button";
 import { LTxt, MTxt, STxt } from "../../components/text/text";
 import { Education, Notebook, GroupPresentation } from "@carbon/icons-react";
 import { Helmet } from 'react-helmet';
+import { useNavigate } from 'react-router-dom';
 
 //temp
 
 const LandingPage = () => {
+
+    const navigate = useNavigate();
 
     return (
         <>
@@ -28,7 +31,7 @@ const LandingPage = () => {
                 <div className="call-to-action">
                     {/* href="/create-account" */}
                     <Link id="login-link" href="/login" underline={true}>Log In</Link>
-                    <InputButton id="get-started-button" URL="/create-account" text="Get Started" />
+                    <InputButton id="get-started-button" onClick={() => navigate("/create-account")} text="Get Started" />
                 </div>
                 
             </div>
@@ -90,7 +93,7 @@ const LandingPage = () => {
                 <div className="call-to-action">
                     {/* href="/create-account" */}
                     <Link id="login-link" href="/login" underline={true}>Log In</Link>
-                    <InputButton id="get-started-button" URL="/create-account" text="Get Started" />
+                    <InputButton id="get-started-button" onClick={() => navigate("/create-account")} text="Get Started" />
                 </div>
             </div>
 

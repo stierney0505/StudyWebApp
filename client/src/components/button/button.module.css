@@ -12,3 +12,11 @@
   background-color: var(--primary-hover);
   color: var(--on-primary-hover);
 }
+
+.small {
+  padding: 6px 12px;
+}
+
+.medium {
+  padding: 10px 20px;
+}

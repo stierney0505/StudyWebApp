@@ -2,8 +2,8 @@ import { useId, useState } from 'react';
 
 import styles from './change-password.module.css';
 
-import TextField from '../../../components/text-field/text-field';
-import Button from '../../../components/button/button';
+import OutlinedTextField from '../../../components/outlined-text-field/outlined-text-field';
+import InputButton from '../../../components/button/button';
 import { useNavigate } from 'react-router-dom';
 
 const ChangePasswordForm = () => {
@@ -26,7 +26,7 @@ const ChangePasswordForm = () => {
       <h1 className={ [styles.heading, styles['poppins-bold']].join(' ') }>Change Password</h1>
       <form method='post' onSubmit={createAccount} >
         <div className={styles['form-line']}>
-          <TextField
+          <OutlinedTextField
             fieldId={id + '-password'}
             text={'New Password'}
             name={'password'}
@@ -39,7 +39,7 @@ const ChangePasswordForm = () => {
           />
         </div>
         <div className={styles['form-line']}>
-          <TextField
+          <OutlinedTextField
             fieldId={id + '-confirmPassword'}
             text={'Confirm Password'}
             name={'confirm-password'}
@@ -52,8 +52,8 @@ const ChangePasswordForm = () => {
           />
         </div>
         <div className={styles['button-line']}>
-          <Button type={'button'} text={'Back to Login'} URL={'/login'} />
-          <Button type={'submit'} text={'Submit'} />
+          <InputButton type={'button'} text={'Back to Login'} onClick={() => navigate('/login')} />
+          <InputButton type={'submit'} text={'Submit'} />
         </div>
       </form>
     </>

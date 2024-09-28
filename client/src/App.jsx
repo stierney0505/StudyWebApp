@@ -6,8 +6,8 @@ import './index.css';
 import './App.css';
 
 //headers
-// import SessionHeader from './components/header/non-session-header/header.jsx';
-import NoSessionHeader from './components/header/non-session-header/non-session-header.jsx';
+import SessionHeader from './components/header/session-header/session-header.jsx';
+import NonSessionHeader from './components/header/non-session-header/non-session-header.jsx';
 
 // Pages
 import LandingPage from './screens/landing/landing-page.jsx';
@@ -21,6 +21,7 @@ import RequestPasswordReset from './screens/reset-password/request-password-rese
 import PasswordResetRequestSent from './screens/reset-password/password-reset-request-sent/password-reset-request-sent.jsx';
 import ChangePassword from './screens/reset-password/change-password/change-password.jsx';
 import PasswordSuccessfullyChanged from './screens/reset-password/password-successfully-changed/password-successfully-changed.jsx';
+import ModifyAccount from './screens/modify-account/modify-account.jsx';
 
 
 const App = () => {
@@ -46,26 +47,31 @@ const App = () => {
 
 
     <Routes>
-      <Route 
-          path="/"
-          element={
-            <>
-              <NoSessionHeader darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>
-              <Container>
-                <div className='content'>
-                  <LandingPage />
-                </div>
-                <Footer /><br />
-              </Container>
-            </>
-            
-          }>
-        </Route>
+      <Route
+        path="/"
+        element={
+          <>
+            <NonSessionHeader darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+            <Container>
+              <div className='content'>
+                <LandingPage />
+              </div>
+              <Footer /><br />
+            </Container>
+          </>
+        }>
+      </Route>
       <Route
         path="/create-account"
         element={
           <>
-            <CreateAccount />
+            <NonSessionHeader darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+            <Container>
+              <div className='content'>
+                <CreateAccount />
+              </div>
+                <Footer />
+            </Container>
           </>
         }
       />
@@ -73,7 +79,7 @@ const App = () => {
         path="/login"
         element={
           <>
-            <NoSessionHeader darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>
+            <NonSessionHeader darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
             <Container>
               <div className='content'>
                 <LoginPage />
@@ -104,7 +110,7 @@ const App = () => {
         element={
           <>
             <ChangePassword />
-          </>  
+          </>
         }
       />
       <Route
@@ -115,21 +121,35 @@ const App = () => {
           </>
         }
       />
-          {/* Catch All Page - 404 */}
-        <Route
-          path="*"
-          element={
-            <>
-              <NoSessionHeader darkMode={darkMode} toggleDarkMode={toggleDarkMode}/>
-              <Container>
-                <div className='content'>
-                  <NotFoundPage />
-                </div>
-                <Footer />
-              </Container>
-            </>
-          }>
-        </Route>
+      <Route
+        path="/modify-account/"
+        element={
+          <>
+            <SessionHeader darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+            <Container>
+              <div className='content'>
+                <ModifyAccount />
+              </div>
+              <Footer />
+            </Container>
+          </>
+        }
+      />
+      {/* Catch All Page - 404 */}
+      <Route
+        path="*"
+        element={
+          <>
+            <NonSessionHeader darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+            <Container>
+              <div className='content'>
+                <NotFoundPage />
+              </div>
+              <Footer />
+            </Container>
+          </>
+        }>
+      </Route>
     </Routes>
   );
 }
