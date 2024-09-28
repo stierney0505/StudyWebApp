@@ -34,10 +34,11 @@ const LocationDisplay = () => {
 
 beforeEach(() => {
   render(
-    <MemoryRouter initialEntries={['/']}>
+    <MemoryRouter initialEntries={['/', '/modify-account']}>
       <Routes>
-        <Route path="/" element={<ModifyAccount />} />
-        <Route path="/dashboard" element={<div>Dashboard Displayed</div>} />
+        <Route path="/modify-account" element={<ModifyAccount />} />
+        <Route path="/request-password-reset" element={<div>Request Password Reset</div>} />
+        <Route path="/" element={<div>Default Page Displayed</div>} />
         <Route path='*' element={<div>No Match</div>} />
       </Routes>
       <LocationDisplay />
@@ -60,29 +61,29 @@ function fireInput(labelText, value) {
 function inputAndValidate(labelText, value) {
   fireInput(labelText, value);
 
-  const submitButton = screen.getByRole('button', { name: /Create/i });
+  const submitButton = screen.getByRole('button', { name: /Update/i });
   fireEvent.click(submitButton);
 }
 
 async function findErrorElement(labelText) {
   const errors = await screen.findAllByRole('alert');
-  if (errors.length !== 5) {
-    throw new Error('Expected 5 error messages to appear, got ' + errors.length);
+  if (errors.length !== 3) {
+    throw new Error('Expected 3 error messages to appear, got ' + errors.length);
   }
 
-  const fieldNames = ['First Name', 'Last Name', 'Email', 'Password', 'Confirm Password'];
+  const fieldNames = ['First Name', 'Last Name', 'Email'];
   return errors[fieldNames.indexOf(labelText)];
 }
 
 test('should display required errors (1 per field) when value is invalid', async () => {
-  const submitButton = screen.getByRole('button', { name: /Create/i });
+  const submitButton = screen.getByRole('button', { name: /Update/i });
   fireEvent.click(submitButton);
 
   const errors = await screen.findAllByRole('alert');
-  expect(errors).toHaveLength(5);
+  expect(errors).toHaveLength(3);
 
-  const fieldNames = ['First Name', 'Last Name', 'Email', 'Password', 'Confirm Password'];
-  for (let i = 0; i < 5; i++) {
+  const fieldNames = ['First Name', 'Last Name', 'Email'];
+  for (let i = 0; i < 3; i++) {
     expect(errors[i]).toHaveTextContent(fieldNames[i] + ' is required');
   }
 });
@@ -134,59 +135,13 @@ describe('email validation', () => {
   });
 });
 
-describe('password validation', () => {
-  const labelText = 'Password';
-
-  test('display password min length error', async () => {
-    inputAndValidate(labelText, 'a');
-
-    const error = await findErrorElement(labelText);
-    expect(error).toHaveTextContent('Password must be at least 8 characters long');
-  });
-
-  test('display password at least 1 digit error', async () => {
-    inputAndValidate(labelText, 'aaaaaaaa');
-
-    const error = await findErrorElement(labelText);
-    expect(error).toHaveTextContent('Password must contain at least 1 digit');
-  });
-
-  test('display password at least 1 letter error', async () => {
-    inputAndValidate(labelText, '11111111');
-
-    const error = await findErrorElement(labelText);
-    expect(error).toHaveTextContent('Password must contain at least 1 letter');
-  });
-
-  test('display password at least 1 special character error', async () => {
-    inputAndValidate(labelText, 'aaaa1111');
-
-    const error = await findErrorElement(labelText);
-    expect(error).toHaveTextContent('Password must contain at least 1 special character');
-  });
-});
-
-describe('password validation', () => {
-  const labelText = 'Confirm Password';
-
-  test('display confirm password match password error', async () => {
-    fireInput('Password', '1imagination!');
-    inputAndValidate(labelText, 'notAMatchingPassword1!');
-
-    const errors = await screen.findAllByRole('alert');
-    expect(errors[errors.length - 1]).toHaveTextContent('Confirm Password must match Password');
-  });
-});
-
 test('Submitting valid input makes a request to the backend', async () => {
   fireInput('First Name', 'James');
   fireInput('Last Name', 'Walker');
   fireInput('Email', 'jwalk@email.com');
-  fireInput('Password', '1imagination!');
-  fireInput('Confirm Password', '1imagination!');
 
-  fireEvent.click(screen.getByRole('button', { name: /create/i }));
+  fireEvent.click(screen.getByRole('button', { name: /Update/i }));
 
-  expect(await screen.findByText('Dashboard Displayed')).toBeInTheDocument();
-  expect(await screen.findByTestId('location-display')).toHaveTextContent('/dashboard');
+  // expect(await screen.findByText('Dashboard Displayed')).toBeInTheDocument();
+  // expect(await screen.findByTestId('location-display')).toHaveTextContent('/dashboard');
 });

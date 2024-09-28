@@ -20,8 +20,6 @@ const ModifyForm = () => {
     setValue,
   } = useForm();
 
-  console.log(errors);
-
   const [isSuccess, setIsSuccess] = useState(undefined);
 
   axios.get(`${import.meta.env.VITE_SERVER_URI}/api/users/1`, { withCredentials: true })
@@ -35,8 +33,6 @@ const ModifyForm = () => {
     });
 
   function onSubmit(data) {
-    console.log(data);
-
     axios.put(
       `${import.meta.env.VITE_SERVER_URI}/api/users/1`,
       data,
@@ -45,12 +41,10 @@ const ModifyForm = () => {
       .then(function (response) {
         if (response.data) {
           setIsSuccess(true);
-          console.log('User successfully modified');
         }
       })
-      .catch(function (error) {
+      .catch(function () {
         setIsSuccess(false);
-        console.log(error);
       });
   }
 
@@ -64,7 +58,7 @@ const ModifyForm = () => {
           <p>Error updating account details.</p>
         )}
       </figure>}
-      <form onSubmit={handleSubmit(onSubmit)} >
+      <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <div className={[styles['name-group'], styles['form-line']].join(' ')}>
           <div className={styles['text-field']}>
             <OutlinedTextField
@@ -79,7 +73,7 @@ const ModifyForm = () => {
               })}
               isError={errors.firstName}
             />
-            {(errors.firstName) && <p className={styles['error-text']}>{errors.firstName.message}</p>}
+            {(errors.firstName) && <p role="alert" className={styles['error-text']}>{errors.firstName.message}</p>}
           </div>
           <div className={styles['text-field']}>
             <OutlinedTextField
@@ -94,7 +88,7 @@ const ModifyForm = () => {
               })}
               isError={errors.lastName}
             />
-            {(errors.lastName) && <p className={styles['error-text']}>{errors.lastName.message}</p>}
+            {(errors.lastName) && <p role="alert" className={styles['error-text']}>{errors.lastName.message}</p>}
           </div>
         </div>
         <div className={styles['form-line']}>
@@ -113,7 +107,7 @@ const ModifyForm = () => {
               })}
               isError={errors.email}
             />
-            {(errors.email) && <p className={styles['error-text']}>{errors.email.message}</p>}
+            {(errors.email) && <p role="alert" className={styles['error-text']}>{errors.email.message}</p>}
           </div>
         </div>
         <div className={styles['reset-line']}>
@@ -122,7 +116,7 @@ const ModifyForm = () => {
         </div>
         <div className={styles['button-line']}>
           <InputButton type={'button'} text={'Go Back'} onClick={() => navigate(-1)} />
-          <InputButton type={'submit'} text={'Submit'} />
+          <InputButton type={'submit'} text={'Update'} />
         </div>
       </form>
     </>
