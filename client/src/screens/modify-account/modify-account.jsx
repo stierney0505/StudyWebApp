@@ -134,11 +134,11 @@ const ModifyAccount = () => (
     <Helmet>
       <title>Modify Account</title>
     </Helmet>
-    <div className={styles['screen-container']}>
-      <div className={styles['form-container']}>
+    <main className={styles['screen-container']}>
+      <section className={styles['form-container']}>
         <ModifyForm />
-      </div>
-    </div>
+      </section>
+    </main>
   </>
 );
 
