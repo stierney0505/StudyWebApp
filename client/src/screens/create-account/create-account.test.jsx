@@ -154,7 +154,7 @@ describe('password validation', () => {
   });
 });
 
-describe('password validation', () => {
+describe('confirm password validation', () => {
   const labelText = 'Confirm Password';
 
   test('display confirm password match password error', async () => {
