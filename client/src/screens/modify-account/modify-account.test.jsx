@@ -18,7 +18,12 @@ const server = setupServer(
     });
   }),
 
-  http.put(`${import.meta.env.VITE_SERVER_URI}/api/users/1`, () => {
+  http.put(`${import.meta.env.VITE_SERVER_URI}/api/users/1`, async ({ request }) => {
+    const data = await request.json();
+    if (data.firstName === 'incorrect') {
+      return HttpResponse.error('test error')
+    }
+
     return HttpResponse.json('user modified');
   }),
 );
@@ -135,6 +140,16 @@ describe('email validation', () => {
   });
 });
 
+test('Submitting and getting error from backend shows error response on page', async () => {
+  fireInput('First Name', 'incorrect');
+  fireInput('Last Name', 'Walker');
+  fireInput('Email', 'jwalk@email.com');
+
+  fireEvent.click(screen.getByRole('button', { name: /Update/i }));
+
+  expect(await screen.findByText('Error updating account details.')).toBeInTheDocument();
+});
+
 test('Submitting valid input makes a request to the backend', async () => {
   fireInput('First Name', 'James');
   fireInput('Last Name', 'Walker');
@@ -142,6 +157,23 @@ test('Submitting valid input makes a request to the backend', async () => {
 
   fireEvent.click(screen.getByRole('button', { name: /Update/i }));
 
-  // expect(await screen.findByText('Dashboard Displayed')).toBeInTheDocument();
-  // expect(await screen.findByTestId('location-display')).toHaveTextContent('/dashboard');
+  expect(await screen.findByText('Account details successfully updated!')).toBeInTheDocument();
 });
+
+test('Pressing "Go Back" button goes to previous location in navigation history', async () => {
+  const goBackButton = screen.getByRole('button', { name: /Go Back/i });
+
+  fireEvent.click(goBackButton);
+
+  expect(await screen.findByText('Default Page Displayed')).toBeInTheDocument();
+  expect(await screen.findByTestId('location-display')).toHaveTextContent('/');
+})
+
+test('Pressing "Reset Password" button goes to reset password page', async () => {
+  const resetPasswordButton = screen.getByRole('button', { name: /Reset Password/i });
+
+  fireEvent.click(resetPasswordButton);
+
+  expect(await screen.findByText('Request Password Reset')).toBeInTheDocument();
+  expect(await screen.findByTestId('location-display')).toHaveTextContent('/request-password-reset');
+})
