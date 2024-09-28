@@ -51,7 +51,7 @@ const ModifyForm = () => {
   return (
     <>
       <h1 className={[styles.heading, styles['poppins-bold']].join(' ')}>Modify Account Details</h1>
-      {(typeof isSuccess !== 'undefined') && <figure className={isSuccess ? styles['modify-success'] : styles['modify-error']}>
+      {(typeof isSuccess !== 'undefined') && <figure role="alert" className={isSuccess ? styles['modify-success'] : styles['modify-error']}>
         {isSuccess ? (
           <p>Account details successfully updated!</p>
         ) : (
