@@ -1,4 +1,4 @@
-import { useId } from 'react';
+import { useId, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
@@ -22,7 +22,9 @@ const ModifyForm = () => {
 
   console.log(errors);
 
-  axios.get(`${import.meta.env.VITE_SERVER_URI}/api/users/tokenUser`, { withCredentials: true })
+  const [isSuccess, setIsSuccess] = useState(undefined);
+
+  axios.get(`${import.meta.env.VITE_SERVER_URI}/api/users/1`, { withCredentials: true })
     .then(function (response) {
       setValue('firstName', response.data.data.firstName);
       setValue('lastName', response.data.data.lastName);
@@ -34,11 +36,34 @@ const ModifyForm = () => {
 
   function onSubmit(data) {
     console.log(data);
+
+    axios.put(
+      `${import.meta.env.VITE_SERVER_URI}/api/users/1`,
+      data,
+      { withCredentials: true }
+    )
+      .then(function (response) {
+        if (response.data) {
+          setIsSuccess(true);
+          console.log('User successfully modified');
+        }
+      })
+      .catch(function (error) {
+        setIsSuccess(false);
+        console.log(error);
+      });
   }
 
   return (
     <>
       <h1 className={[styles.heading, styles['poppins-bold']].join(' ')}>Modify Account Details</h1>
+      {(typeof isSuccess !== 'undefined') && <figure className={isSuccess ? styles['modify-success'] : styles['modify-error']}>
+        {isSuccess ? (
+          <p>Account details successfully updated!</p>
+        ) : (
+          <p>Error updating account details.</p>
+        )}
+      </figure>}
       <form onSubmit={handleSubmit(onSubmit)} >
         <div className={[styles['name-group'], styles['form-line']].join(' ')}>
           <div className={styles['text-field']}>
