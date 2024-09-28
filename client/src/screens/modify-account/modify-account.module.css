@@ -5,6 +5,32 @@
   color: var(--on-background);
 }
 
+figure.modify-success {
+  display: flex;
+  align-items: center;
+  height: 3.25em;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 1.25em;
+  border: 2px solid var(--success);
+  border-radius: 15px;
+  background-color: var(--success-background);
+  color: var(--on-background);
+}
+
+figure.modify-error {
+  display: flex;
+  align-items: center;
+  height: 3.25em;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 1.25em;
+  border: 2px solid var(--error);
+  border-radius: 15px;
+  background-color: var(--error-background);
+  color: var(--on-background);
+}
+
 .name-group {
   display: flex;
   flex-direction: row;
@@ -12,7 +38,7 @@
 }
 
 .form-line {
-  margin-bottom: 20px;
+  margin-bottom: 1.25em;
 }
 
 .error-text {
