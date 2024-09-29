@@ -20,4 +20,8 @@ public abstract class CustomError extends RuntimeException {
     public int getErrorCode() { return errorCode; }
     public String getDetailedMessage() { return detailedMessage; }
     public String getMessage() { return message; }
+
+    public void setDetailedMessage(String detailedMessage) {this.detailedMessage = detailedMessage;}
+    public void setMessage(String message) {this.message = message;}
+    public void setErrorCode(int errorCode) {this.errorCode = errorCode;}
 }

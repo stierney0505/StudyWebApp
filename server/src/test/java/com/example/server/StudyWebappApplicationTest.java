@@ -7,7 +7,7 @@ import org.springframework.test.context.ActiveProfiles;
 
 
 @Suite
-@SelectClasses({UserRoutesTest.class})
+@SelectClasses({UserRoutesTest.class, StudyMaterialRoutesTest.class})
 @ActiveProfiles("test")
 class StudyWebappApplicationTest {
 

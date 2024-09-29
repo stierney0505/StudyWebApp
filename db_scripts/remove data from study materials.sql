@@ -1,5 +1,6 @@
 SET FOREIGN_KEY_CHECKS = 0;
 
+drop table users;
 drop table study_material_tag_mapping;
 drop table study_material_tags;
 drop table study_material;

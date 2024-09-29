@@ -34,8 +34,8 @@ CREATE TABLE IF NOT EXISTS `user_study_material_join` (
 -- Table to store flashcard information
 CREATE TABLE IF NOT EXISTS `flashcards` ( 
 	`id` INT NOT NULL AUTO_INCREMENT, 
-    `key` VARCHAR(50) NOT NULL,
-    `value` VARCHAR(250) NOT NULL,
+    `question` VARCHAR(50) NOT NULL,
+    `answer` VARCHAR(250) NOT NULL,
     PRIMARY KEY(id)
 );
 -- Joint table between flashcards and study material

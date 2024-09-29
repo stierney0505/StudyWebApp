@@ -11,6 +11,8 @@ public class ResponseGenerator<T> {
     }
 
     public static <T> ResponseEntity<Response<T>> CreateSuccessResponse(Response<T> response) {
-        return new ResponseEntity<Response<T>>(response, HttpStatusCode.valueOf(200));
+        return ResponseEntity.ok()
+                .header("Content-Type", "application/json")
+                .body(response);
     }
 }
