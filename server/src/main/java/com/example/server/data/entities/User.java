@@ -6,6 +6,10 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 @Entity
 @Table(name="users")
 public class User {
@@ -35,6 +39,16 @@ public class User {
     @JoinColumn(name = "security_id", nullable = true)
     @JsonIgnore
     private Security security;
+
+    @ManyToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "user_study_material_join",
+            joinColumns = @JoinColumn(name="user_id"),
+            inverseJoinColumns = @JoinColumn(name="study_material_id")
+    )
+    @JsonIgnore
+    private Set<StudyMaterial> studyMaterials = new HashSet<>();
+
 
     public User() {}
 
@@ -69,6 +83,20 @@ public class User {
 
     public void setSecurity(Security security) { this.security = security; }
 
+    public void addStudyMaterial(StudyMaterial studyMaterial) {
+        this.studyMaterials.add(studyMaterial);
+        studyMaterial.getUsers().add(this); // Add this user to the studyMaterial
+    }
+
+    public void removeStudyMaterial(StudyMaterial studyMaterial) {
+        this.studyMaterials.remove(studyMaterial);
+        studyMaterial.getUsers().remove(this); // Remove this user from the studyMaterial
+    }
+
+    public Set<StudyMaterial> getStudyMaterials() {return studyMaterials;}
+
+    public void setStudyMaterials(Set<StudyMaterial> studyMaterials) {this.studyMaterials = studyMaterials;}
+
     @Override
     public String toString() {
         return "User{" + "id=" + id + ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\''
@@ -83,4 +111,10 @@ public class User {
         // Ideally the ids of users should only be compared after they have been generated from the database
         return user.id == this.id;
     }
+
+    @Override
+    public int hashCode() {
+        return Integer.hashCode(id);
+    }
 }
+
